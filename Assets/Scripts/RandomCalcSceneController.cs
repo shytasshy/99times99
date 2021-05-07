@@ -107,6 +107,7 @@ public class RandomCalcSceneController : MonoBehaviour
             list_tabs.Add(CreateTabObject(i));
         }
         list_tabs[0].GetComponent<Toggle>().isOn = true;
+        list_tabs[0].GetComponent<Toggle>().Select();
         GameObject.FindWithTag("CoBtn").transform.position += new Vector3(0, 90, 0);
         GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = false;
         StartCoroutine(moveObject(GameObject.Find("TabPanel"),new Vector3(0,-190,0)));
