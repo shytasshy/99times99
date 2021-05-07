@@ -3938,9 +3938,9 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4378,11 +4378,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 620524894}
     m_Modifications:
+    - target: {fileID: 4445327554475293775, guid: 579a70b87a6ce4bdcac1d5834ddcba0c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.7607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445327554475293775, guid: 579a70b87a6ce4bdcac1d5834ddcba0c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.7607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445327554475293775, guid: 579a70b87a6ce4bdcac1d5834ddcba0c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.7607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445327554475293775, guid: 579a70b87a6ce4bdcac1d5834ddcba0c,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
     - target: {fileID: 4445327555009322553, guid: 579a70b87a6ce4bdcac1d5834ddcba0c,
         type: 3}
       propertyPath: m_Group
       value: 
       objectReference: {fileID: 620524895}
+    - target: {fileID: 4445327555009322553, guid: 579a70b87a6ce4bdcac1d5834ddcba0c,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445327555009322553, guid: 579a70b87a6ce4bdcac1d5834ddcba0c,
+        type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0.8207547
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445327555009322553, guid: 579a70b87a6ce4bdcac1d5834ddcba0c,
+        type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 0.8207547
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445327555009322553, guid: 579a70b87a6ce4bdcac1d5834ddcba0c,
+        type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.8207547
+      objectReference: {fileID: 0}
     - target: {fileID: 4445327555009322558, guid: 579a70b87a6ce4bdcac1d5834ddcba0c,
         type: 3}
       propertyPath: m_LocalPosition.x
