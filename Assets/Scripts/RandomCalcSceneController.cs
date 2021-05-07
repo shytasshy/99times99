@@ -10,7 +10,6 @@ public class RandomCalcSceneController : MonoBehaviour
     [SerializeField] private Text left_num_text = default;
     [SerializeField] private Text right_num_text = default;
     [SerializeField] private GameObject after_checkbutton_object = default;
-    [SerializeField] private GameObject prefabObj = default;
     [SerializeField] private Transform parentTransform = default;
     [SerializeField] private AnimationCurve tabMoveCurve = default;
     [SerializeField] private Canvas canvas = default;
@@ -18,14 +17,13 @@ public class RandomCalcSceneController : MonoBehaviour
     public static int select_num;
     public static int left_num;
     public static int right_num;
-    public static int tab_num;
+    public static List<int> tab_flag_list;
     void Start()
     {
         select_num = 0;
         left_num = Random.Range(1, 100);
         right_num = Random.Range(1, 100);
         ans_num = left_num * right_num;
-        tab_num = 0;
         selectnum_text.text = "";
         left_num_text.text = left_num.ToString();
         right_num_text.text = right_num.ToString();
@@ -101,10 +99,10 @@ public class RandomCalcSceneController : MonoBehaviour
 
     public void PushCommentButton()
     {
-        tab_num = Calc_tab_num(get_left_num(),get_right_num());
+        tab_flag_list = Calc_tab_num(get_left_num(),get_right_num());
         List<GameObject> list_tabs = new List<GameObject>();
-            for (int i = 0; i < tab_num; i++) {
-            list_tabs.Add(CreateTabObject(i));
+            for (int i = 0; i < tab_flag_list.Count; i++) {
+            list_tabs.Add(CreateTabObject(i,tab_flag_list));
         }
         list_tabs[0].GetComponent<Toggle>().isOn = true;
         list_tabs[0].GetComponent<Toggle>().Select();
@@ -114,27 +112,32 @@ public class RandomCalcSceneController : MonoBehaviour
         
     }
 
-    public int Calc_tab_num(int left_num, int right_num)
+    public List<int> Calc_tab_num(int left_num, int right_num)
     {
-        tab_num = 3;
-        return tab_num;
+        var tab_flag_list = new List<int>();
+        tab_flag_list.Add(1);
+        tab_flag_list.Add(0);
+        tab_flag_list.Add(1);
+        return tab_flag_list;
     }
 
-    public GameObject CreateTabObject(int i)
+    public GameObject CreateTabObject(int i, List<int> tab_list)
     {
 
-        GameObject tab_obj = Instantiate(prefabObj, Vector2.zero, Quaternion.identity);
-
-        tab_obj.transform.SetParent(parentTransform);
-        tab_obj.transform.Find("Background").position = new Vector3(100, 0,0);
+        GameObject tab_obj = GameObject.FindWithTag("tab"+i.ToString());
+ //       tab_obj.transform.SetParent(parentTransform);
+ //       tab_obj.transform.Find("Background").position = new Vector3(100, 0,0);
 /* togglegroup = tabcontainer(parent) */
-        ToggleGroup tab_togglegroup = tab_obj.transform.parent.GetComponent<ToggleGroup>();
-        Toggle tab_toggle = tab_obj.GetComponent<Toggle>();
-        tab_toggle.group = tab_togglegroup;
+ //       ToggleGroup tab_togglegroup = tab_obj.transform.parent.GetComponent<ToggleGroup>();
+ //       tab_obj.GetComponent<Toggle>().group = tab_togglegroup;
 
 /*tab position*/
-        tab_obj.transform.localPosition = new Vector3(i*200-300, 550,0);
+        tab_obj.transform.localPosition = new Vector3(i*113-230,550,0);
         tab_obj.transform.localScale = new Vector3(1, 1, 1);
+        if(tab_list[i] == 0){
+            tab_obj.GetComponent<Toggle>().interactable = false;
+            tab_obj.transform.Find("Background").Find("text").GetComponent<Text>().color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
+        }
 
         return tab_obj;
     }

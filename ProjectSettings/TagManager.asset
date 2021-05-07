@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - CoBtn
+  - tab1
+  - tab0
+  - tab2
+  - tab3
+  - tab4
   layers:
   - Default
   - TransparentFX
