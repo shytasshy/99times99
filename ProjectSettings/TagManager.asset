@@ -12,6 +12,7 @@ TagManager:
   - tab4
   - TabP
   - ClCoBtn
+  - TabC
   layers:
   - Default
   - TransparentFX

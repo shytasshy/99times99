@@ -13,6 +13,8 @@ public class RandomCalcSceneController : MonoBehaviour
     [SerializeField] private Transform parentTransform = default;
     [SerializeField] private AnimationCurve tabMoveCurve = default;
     [SerializeField] private Canvas canvas = default;
+    private GameObject tab_panel = default;
+    private GameObject tab_container = default;
     public static int ans_num;
     public static int select_num;
     public static int left_num;
@@ -29,6 +31,9 @@ public class RandomCalcSceneController : MonoBehaviour
         left_num_text.text = left_num.ToString();
         right_num_text.text = right_num.ToString();
         ansnum_text.text = ans_num.ToString();
+        tab_list = new List<GameObject>();
+        tab_panel = GameObject.FindWithTag("TabP");
+        tab_container = GameObject.FindWithTag("TabC");
     }
 
     public void PushNumButton(int number)
@@ -101,8 +106,9 @@ public class RandomCalcSceneController : MonoBehaviour
     public void PushCommentButton()
     {
         tab_flag_list = Calc_tab_num(get_left_num(),get_right_num());
+        tab_container.SetActive(true);
         tab_list = new List<GameObject>();
-            for (int i = 0; i < tab_flag_list.Count; i++) {
+        for (int i = 0; i < tab_flag_list.Count; i++) {
             tab_list.Add(CreateTabObject(i,tab_flag_list));
         }
         tab_list[0].GetComponent<Toggle>().isOn = true;
@@ -110,23 +116,23 @@ public class RandomCalcSceneController : MonoBehaviour
         GameObject.FindWithTag("CoBtn").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
         GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = false;
         GameObject.FindWithTag("ClCoBtn").transform.localPosition += new Vector3(0.0f, 200.0f, 0.0f);
-        StartCoroutine(moveObject(GameObject.FindWithTag("TabP"),new Vector3(0.0f,-190.0f,0.0f)));
+        StartCoroutine(moveObject(tab_panel,new Vector3(0.0f,-190.0f,0.0f)));
         
     }
 
     public void PushCloseCommentButton()
     {
-        for(int i = 0; i < tab_list.Count; i++)
+        tab_container.SetActive(false);
+/*        for(int i = 0; i < tab_list.Count; i++)
         {
             tab_list[i].transform.localPosition = Vector3.zero;
         }
+*/
+        StartCoroutine(moveObject(tab_panel, new Vector3(0.0f, -450.0f, 90.0f)));
         GameObject.FindWithTag("CoBtn").transform.localPosition -= new Vector3(0.0f, 20.0f, 0.0f);
         GameObject.FindWithTag("ClCoBtn").transform.localPosition -= new Vector3(0.0f, 200.0f, 0.0f);
         GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = true;
-        StartCoroutine(moveObject(GameObject.FindWithTag("TabP"), new Vector3(0.0f, -450.0f, 90.0f)));
-    /*tab_listをfor文で検索してpositionをzeroに*/
-        /*CoBtnもとに戻す*/
-        /*TabPanelを元に戻す*/
+
 
     }
 
@@ -142,25 +148,19 @@ public class RandomCalcSceneController : MonoBehaviour
     public GameObject CreateTabObject(int i, List<int> tab_list)
     {
 
-        GameObject tab_obj = GameObject.FindWithTag("tab"+i.ToString());
- //       tab_obj.transform.SetParent(parentTransform);
- //       tab_obj.transform.Find("Background").position = new Vector3(100, 0,0);
-/* togglegroup = tabcontainer(parent) */
- //       ToggleGroup tab_togglegroup = tab_obj.transform.parent.GetComponent<ToggleGroup>();
- //       tab_obj.GetComponent<Toggle>().group = tab_togglegroup;
+        Transform tab_obj = tab_container.transform.Find("Tab" + i.ToString());
 
-/*tab position*/
-        tab_obj.transform.localPosition = new Vector3(i*45-92,210,0);
-        tab_obj.transform.localScale = new Vector3(1, 1, 1);
+        tab_obj.localPosition = new Vector3(i*45-92,210,0);
+        tab_obj.localScale = new Vector3(1, 1, 1);
         if(tab_list[i] == 0){
-            tab_obj.GetComponent<Toggle>().interactable = false;
-            tab_obj.transform.Find("Background").Find("text").GetComponent<Text>().color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
+            tab_obj.gameObject.GetComponent<Toggle>().interactable = false;
+            tab_obj.Find("Background/text").GetComponent<Text>().color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
         }
 
-        return tab_obj;
+        return tab_obj.gameObject;
     }
 
-    public IEnumerator moveObject(GameObject obj,Vector3 targetPosition)
+    public IEnumerator moveObject(GameObject obj, Vector3 targetPosition)
     {
         float currentTime = 0;
         float moveTime = 0.6f;
@@ -168,7 +168,7 @@ public class RandomCalcSceneController : MonoBehaviour
         Vector3 startPosition = obj.transform.localPosition;
 
         Vector3 position = targetPosition - startPosition;
-     
+
 
 
         while (currentTime < moveTime)
@@ -181,4 +181,8 @@ public class RandomCalcSceneController : MonoBehaviour
 
     }
 
+    public IEnumerator waitMoment(float time)
+    {
+        yield return time;
+    }
 }
