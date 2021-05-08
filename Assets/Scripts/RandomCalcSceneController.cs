@@ -113,26 +113,25 @@ public class RandomCalcSceneController : MonoBehaviour
         }
         tab_list[0].GetComponent<Toggle>().isOn = true;
         tab_list[0].GetComponent<Toggle>().Select();
-        GameObject.FindWithTag("CoBtn").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
+ /*       GameObject.FindWithTag("CoBtn").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
         GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = false;
-        GameObject.FindWithTag("ClCoBtn").transform.localPosition += new Vector3(0.0f, 200.0f, 0.0f);
-        StartCoroutine(moveObject(tab_panel,new Vector3(0.0f,-190.0f,0.0f)));
+        GameObject.FindWithTag("ClCoBtn").transform.localPosition += new Vector3(0.0f, 200.0f, 0.0f);*/
+        StartCoroutine(moveUpTabPanel(tab_panel,new Vector3(0.0f,-190.0f,0.0f)));
         
     }
 
     public void PushCloseCommentButton()
     {
-        tab_container.SetActive(false);
-/*        for(int i = 0; i < tab_list.Count; i++)
-        {
-            tab_list[i].transform.localPosition = Vector3.zero;
-        }
-*/
-        StartCoroutine(moveObject(tab_panel, new Vector3(0.0f, -450.0f, 90.0f)));
-        GameObject.FindWithTag("CoBtn").transform.localPosition -= new Vector3(0.0f, 20.0f, 0.0f);
-        GameObject.FindWithTag("ClCoBtn").transform.localPosition -= new Vector3(0.0f, 200.0f, 0.0f);
-        GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = true;
-
+        /*        for(int i = 0; i < tab_list.Count; i++)
+                {
+                    tab_list[i].transform.localPosition = Vector3.zero;
+                }
+        */
+        StartCoroutine(moveDownTabPanel(tab_panel, new Vector3(0.0f, -450.0f, 90.0f)));
+        /*       GameObject.FindWithTag("CoBtn").transform.localPosition -= new Vector3(0.0f, 20.0f, 0.0f);
+               GameObject.FindWithTag("ClCoBtn").transform.localPosition -= new Vector3(0.0f, 200.0f, 0.0f);
+               GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = true;
+        tab_container.SetActive(false);*/
 
     }
 
@@ -178,6 +177,55 @@ public class RandomCalcSceneController : MonoBehaviour
             obj.transform.localPosition = startPosition + scale * position;
             yield return null;
         }
+
+    }
+
+    public IEnumerator moveUpTabPanel(GameObject obj, Vector3 targetPosition)
+    {
+        float currentTime = 0;
+        float moveTime = 0.6f;
+
+        Vector3 startPosition = obj.transform.localPosition;
+
+        Vector3 position = targetPosition - startPosition;
+
+
+        GameObject.FindWithTag("CoBtn").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
+        GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = false;
+        GameObject.FindWithTag("ClCoBtn").transform.localPosition += new Vector3(0.0f, 200.0f, 0.0f);
+
+        while (currentTime < moveTime)
+        {
+            currentTime += Time.deltaTime;
+            float scale = tabMoveCurve.Evaluate(currentTime / moveTime);
+            obj.transform.localPosition = startPosition + scale * position;
+            yield return null;
+        }
+    }
+
+    public IEnumerator moveDownTabPanel(GameObject obj, Vector3 targetPosition)
+    {
+        float currentTime = 0;
+        float moveTime = 0.3f;
+
+        Vector3 startPosition = obj.transform.localPosition;
+
+        Vector3 position = targetPosition - startPosition;
+
+
+
+        while (currentTime < moveTime)
+        {
+            currentTime += Time.deltaTime;
+            float scale = tabMoveCurve.Evaluate(currentTime / moveTime);
+            obj.transform.localPosition = startPosition + scale * position;
+            yield return null;
+        }
+
+        GameObject.FindWithTag("CoBtn").transform.localPosition -= new Vector3(0.0f, 20.0f, 0.0f);
+        GameObject.FindWithTag("ClCoBtn").transform.localPosition -= new Vector3(0.0f, 200.0f, 0.0f);
+        GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = true;
+        tab_container.SetActive(false);
 
     }
 
