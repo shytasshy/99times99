@@ -18,6 +18,7 @@ public class RandomCalcSceneController : MonoBehaviour
     public static int left_num;
     public static int right_num;
     public static List<int> tab_flag_list;
+    public static List<GameObject> tab_list;
     void Start()
     {
         select_num = 0;
@@ -100,16 +101,33 @@ public class RandomCalcSceneController : MonoBehaviour
     public void PushCommentButton()
     {
         tab_flag_list = Calc_tab_num(get_left_num(),get_right_num());
-        List<GameObject> list_tabs = new List<GameObject>();
+        tab_list = new List<GameObject>();
             for (int i = 0; i < tab_flag_list.Count; i++) {
-            list_tabs.Add(CreateTabObject(i,tab_flag_list));
+            tab_list.Add(CreateTabObject(i,tab_flag_list));
         }
-        list_tabs[0].GetComponent<Toggle>().isOn = true;
-        list_tabs[0].GetComponent<Toggle>().Select();
-        GameObject.FindWithTag("CoBtn").transform.position += new Vector3(0, 90, 0);
+        tab_list[0].GetComponent<Toggle>().isOn = true;
+        tab_list[0].GetComponent<Toggle>().Select();
+        GameObject.FindWithTag("CoBtn").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
         GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = false;
-        StartCoroutine(moveObject(GameObject.Find("TabPanel"),new Vector3(0,-190,0)));
+        GameObject.FindWithTag("ClCoBtn").transform.localPosition += new Vector3(0.0f, 200.0f, 0.0f);
+        StartCoroutine(moveObject(GameObject.FindWithTag("TabP"),new Vector3(0.0f,-190.0f,0.0f)));
         
+    }
+
+    public void PushCloseCommentButton()
+    {
+        for(int i = 0; i < tab_list.Count; i++)
+        {
+            tab_list[i].transform.localPosition = Vector3.zero;
+        }
+        GameObject.FindWithTag("CoBtn").transform.localPosition -= new Vector3(0.0f, 20.0f, 0.0f);
+        GameObject.FindWithTag("ClCoBtn").transform.localPosition -= new Vector3(0.0f, 200.0f, 0.0f);
+        GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = true;
+        StartCoroutine(moveObject(GameObject.FindWithTag("TabP"), new Vector3(0.0f, -450.0f, 90.0f)));
+    /*tab_listをfor文で検索してpositionをzeroに*/
+        /*CoBtnもとに戻す*/
+        /*TabPanelを元に戻す*/
+
     }
 
     public List<int> Calc_tab_num(int left_num, int right_num)
@@ -132,7 +150,7 @@ public class RandomCalcSceneController : MonoBehaviour
  //       tab_obj.GetComponent<Toggle>().group = tab_togglegroup;
 
 /*tab position*/
-        tab_obj.transform.localPosition = new Vector3(i*113-230,550,0);
+        tab_obj.transform.localPosition = new Vector3(i*45-92,210,0);
         tab_obj.transform.localScale = new Vector3(1, 1, 1);
         if(tab_list[i] == 0){
             tab_obj.GetComponent<Toggle>().interactable = false;
