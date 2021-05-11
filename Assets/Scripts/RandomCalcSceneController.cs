@@ -15,6 +15,7 @@ public class RandomCalcSceneController : MonoBehaviour
     [SerializeField] private GameObject tab_panel = default;
     [SerializeField] private GameObject tab_container = default;
     [SerializeField] private GameObject page_container = default;
+    [SerializeField] private GameObject page0 = default;
     public static int ans_num;
     public static int select_num;
     public static int left_num;
@@ -142,7 +143,6 @@ public class RandomCalcSceneController : MonoBehaviour
 
         tab_trf.localPosition = new Vector3(i * 45 - 92, 208, 0);
         tab_trf.localScale = new Vector3(1, 1, 1);
-/*        page_trf.localPosition = new Vector3(0, -155, 0);*/
         if(tab_list[i] == 0){
             tab_trf.gameObject.GetComponent<Toggle>().interactable = false;
             tab_trf.Find("Background/text").GetComponent<Text>().color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
@@ -260,24 +260,24 @@ public class RandomCalcSceneController : MonoBehaviour
         }
 
 
-        clm_page_obj.transform.Find("LTenP").GetComponent<Text>().text = LTenP_s;
-        clm_page_obj.transform.Find("LOneP").GetComponent<Text>().text = LOneP_s;
-        clm_page_obj.transform.Find("RTenP").GetComponent<Text>().text = RTenP_s;
-        clm_page_obj.transform.Find("ROneP").GetComponent<Text>().text = ROneP_s;
-        clm_page_obj.transform.Find("1HunP").GetComponent<Text>().text = OHunP_s;
-        clm_page_obj.transform.Find("1TenP").GetComponent<Text>().text = OTenP_s;
-        clm_page_obj.transform.Find("1OneP").GetComponent<Text>().text = OOneP_s;
-        clm_page_obj.transform.Find("2HunP").GetComponent<Text>().text = THunP_s;
-        clm_page_obj.transform.Find("2TenP").GetComponent<Text>().text = TTenP_s;
-        clm_page_obj.transform.Find("2OneP").GetComponent<Text>().text = TOneP_s;
-        clm_page_obj.transform.Find("AThoP").GetComponent<Text>().text = AThoP_s;
-        clm_page_obj.transform.Find("AHunP").GetComponent<Text>().text = AHunP_s;
-        clm_page_obj.transform.Find("ATenP").GetComponent<Text>().text = ATenP_s;
-        clm_page_obj.transform.Find("AOneP").GetComponent<Text>().text = AOneP_s;
-        clm_page_obj.transform.Find("S1TenP").GetComponent<Text>().text = Sub_OTenP_s;
-        clm_page_obj.transform.Find("S2TenP").GetComponent<Text>().text = Sub_TTenP_s;
-        clm_page_obj.transform.Find("SAHunP").GetComponent<Text>().text = Sub_AHunP_s;
-        clm_page_obj.transform.Find("SAThoP").GetComponent<Text>().text = Sub_AThoP_s;
+        clm_page_obj.transform.Find("Objects0/LTenP").GetComponent<Text>().text = LTenP_s;
+        clm_page_obj.transform.Find("Objects0/LOneP").GetComponent<Text>().text = LOneP_s;
+        clm_page_obj.transform.Find("Objects0/RTenP").GetComponent<Text>().text = RTenP_s;
+        clm_page_obj.transform.Find("Objects0/ROneP").GetComponent<Text>().text = ROneP_s;
+        clm_page_obj.transform.Find("Objects1/1HunP").GetComponent<Text>().text = OHunP_s;
+        clm_page_obj.transform.Find("Objects1/1TenP").GetComponent<Text>().text = OTenP_s;
+        clm_page_obj.transform.Find("Objects1/1OneP").GetComponent<Text>().text = OOneP_s;
+        clm_page_obj.transform.Find("Objects2/2HunP").GetComponent<Text>().text = THunP_s;
+        clm_page_obj.transform.Find("Objects2/2TenP").GetComponent<Text>().text = TTenP_s;
+        clm_page_obj.transform.Find("Objects2/2OneP").GetComponent<Text>().text = TOneP_s;
+        clm_page_obj.transform.Find("Objects3/AThoP").GetComponent<Text>().text = AThoP_s;
+        clm_page_obj.transform.Find("Objects3/AHunP").GetComponent<Text>().text = AHunP_s;
+        clm_page_obj.transform.Find("Objects3/ATenP").GetComponent<Text>().text = ATenP_s;
+        clm_page_obj.transform.Find("Objects3/AOneP").GetComponent<Text>().text = AOneP_s;
+        clm_page_obj.transform.Find("Objects1/S1TenP").GetComponent<Text>().text = Sub_OTenP_s;
+        clm_page_obj.transform.Find("Objects2/S2TenP").GetComponent<Text>().text = Sub_TTenP_s;
+        clm_page_obj.transform.Find("Objects3/SAHunP").GetComponent<Text>().text = Sub_AHunP_s;
+        clm_page_obj.transform.Find("Objects3/SAThoP").GetComponent<Text>().text = Sub_AThoP_s;
 
     }
 
@@ -285,10 +285,10 @@ public class RandomCalcSceneController : MonoBehaviour
     {
         int add = (left_num + right_num)/2;
         int diff = Mathf.Abs(left_num - right_num)/2;
-        clm_page_obj.transform.Find("Text1").GetComponent<Text>().text = "① 和÷2：( " + left_num + " + " + right_num + " )÷2 = " +add + "\n② 差÷2：| "+ left_num + " - " + right_num  + " | ÷2 = " + diff.ToString();
-        clm_page_obj.transform.Find("Text2").GetComponent<Text>().text = "①^2：" + add + "^2 = " + add*add + "\n②^2：" + diff + "^2 = " + diff*diff;
-        clm_page_obj.transform.Find("Text3").GetComponent<Text>().text = "①^2 - ②^2：" + add * add + " - " + diff * diff;
-        clm_page_obj.transform.Find("Text4").GetComponent<Text>().text = " = " + (add * add - diff * diff);
+        clm_page_obj.transform.Find("Objects0/Text1").GetComponent<Text>().text = "① 和÷2：( " + left_num + " + " + right_num + " )÷2 = " +add + "\n② 差÷2：| "+ left_num + " - " + right_num  + " | ÷2 = " + diff.ToString();
+        clm_page_obj.transform.Find("Objects1/Text2").GetComponent<Text>().text = "①^2：" + add + "^2 = " + add*add + "\n②^2：" + diff + "^2 = " + diff*diff;
+        clm_page_obj.transform.Find("Objects2/Text3").GetComponent<Text>().text = "①^2 - ②^2：" + add * add + " - " + diff * diff;
+        clm_page_obj.transform.Find("Objects2/Text4").GetComponent<Text>().text = " = " + (add * add - diff * diff);
 
     }
 
@@ -325,7 +325,9 @@ public class RandomCalcSceneController : MonoBehaviour
         GameObject.FindWithTag("CoBtn").transform.localPosition -= new Vector3(0.0f, 20.0f, 0.0f);
         GameObject.FindWithTag("CoBtnI").transform.localPosition -= new Vector3(0.0f, 20.0f, 0.0f);
         GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = false;
-        GameObject.FindWithTag("ClCoBtn").transform.localPosition += new Vector3(0.0f, 200.0f, 0.0f);
+        tab_panel.transform.Find("CloseCommentButton").gameObject.SetActive(true);
+        tab_panel.transform.Find("CloseCommentButtonImage").gameObject.SetActive(true);
+/*        GameObject.FindWithTag("ClCoBtn").transform.localPosition += new Vector3(0.0f, 200.0f, 0.0f);*/
 
         while (currentTime < moveTime)
         {
@@ -350,14 +352,41 @@ public class RandomCalcSceneController : MonoBehaviour
             obj.transform.localPosition = startPosition + scale * position;
             yield return null;
         }
-
+        GameObject.FindWithTag("ClCoBtn").SetActive(false);
+        GameObject.FindWithTag("ClCoBtnI").SetActive(false);
         GameObject.FindWithTag("CoBtn").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
         GameObject.FindWithTag("CoBtnI").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
-        GameObject.FindWithTag("ClCoBtn").transform.localPosition -= new Vector3(0.0f, 200.0f, 0.0f);
+/*        GameObject.FindWithTag("ClCoBtn").transform.localPosition -= new Vector3(0.0f, 200.0f, 0.0f);*/
         GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = true;
         tab_container.SetActive(false);
 
     }
+
+   /* public void PushRightButton()
+    {
+        int i = 1;
+        while(page.transform.Find("Objects"+i)!=null)
+        {
+            if(page.transform.Find("Objects" + i).gameObject.activeSelf == false)
+            {
+                page.transform.Find("Objects" + i).gameObject.SetActive(true);
+                return;
+            }
+            i++;
+        }
+    }
+
+    public void PushLeftButton(GameObject page)
+    {
+        int i = 1;
+        {
+            if (page0.transform.Find("Objects" + i).gameObject.activeSelf == true)
+            {
+                page0.transform.Find("Objects" + i).gameObject.SetActive(false);
+                return;
+            }
+        }
+    }*/
 
     public IEnumerator waitMoment(float time)
     {
