@@ -14,6 +14,7 @@ public class RandomCalcSceneController : MonoBehaviour
     [SerializeField] private Canvas canvas = default;
     [SerializeField] private GameObject tab_panel = default;
     [SerializeField] private GameObject tab_container = default;
+    [SerializeField] private GameObject page_container = default;
     public static int ans_num;
     public static int select_num;
     public static int left_num;
@@ -77,6 +78,7 @@ public class RandomCalcSceneController : MonoBehaviour
 
         //正しい解答と解説ボタンを表示
         after_checkbutton_object.gameObject.SetActive(true);
+        tab_panel.SetActive(true);
 
     }
 
@@ -102,6 +104,7 @@ public class RandomCalcSceneController : MonoBehaviour
 
     public void PushCommentButton()
     {
+        /*tab create*/
         tab_flag_list = Calc_tab_num(get_left_num(),get_right_num());
         tab_list = new List<GameObject>();
         for (int i = 0; i < tab_flag_list.Count; i++) {
@@ -109,34 +112,25 @@ public class RandomCalcSceneController : MonoBehaviour
         }
         tab_list[0].GetComponent<Toggle>().isOn = true;
         tab_list[0].GetComponent<Toggle>().Select();
-        CalcColumnMultiplication(get_left_num(), get_right_num(), tab_list[0]);
- /*       GameObject.FindWithTag("CoBtn").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
-        GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = false;
-        GameObject.FindWithTag("ClCoBtn").transform.localPosition += new Vector3(0.0f, 200.0f, 0.0f);*/
+        CalcColumnMultiplication(get_left_num(), get_right_num(), page_container.transform.Find("Page0").gameObject);
+        CalcAddDifProduction(get_left_num(), get_right_num(), page_container.transform.Find("Page1").gameObject);
+
+        /*move tab panel*/
         StartCoroutine(moveUpCommentPanel(tab_panel,new Vector3(0.0f,-155.0f,0.0f)));
         
     }
 
     public void PushCloseCommentButton()
     {
-        /*        for(int i = 0; i < tab_list.Count; i++)
-                {
-                    tab_list[i].transform.localPosition = Vector3.zero;
-                }
-        */
-        StartCoroutine(moveDownCommentPanel(tab_panel, new Vector3(0.0f, -450.0f, 90.0f)));
-        /*       GameObject.FindWithTag("CoBtn").transform.localPosition -= new Vector3(0.0f, 20.0f, 0.0f);
-               GameObject.FindWithTag("ClCoBtn").transform.localPosition -= new Vector3(0.0f, 200.0f, 0.0f);
-               GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = true;
-        tab_container.SetActive(false);*/
-
+        /*move tab panel*/
+        StartCoroutine(moveDownCommentPanel(tab_panel, new Vector3(0.0f, -485.0f, 90.0f)));
     }
 
     public List<int> Calc_tab_num(int left_num, int right_num)
     {
         var tab_flag_list = new List<int>();
         tab_flag_list.Add(1);
-        tab_flag_list.Add(0);
+        tab_flag_list.Add((left_num + right_num) % 2 == 1 ? 0 : 1);
         tab_flag_list.Add(1);
         return tab_flag_list;
     }
@@ -144,20 +138,20 @@ public class RandomCalcSceneController : MonoBehaviour
     public GameObject SetTabObject(int i, List<int> tab_list)
     {
 
-        Transform tab_obj = tab_container.transform.Find("Tab" + i.ToString());
+        Transform tab_trf = tab_container.transform.Find("Tab" + i.ToString());
 
-        tab_obj.localPosition = new Vector3(i * 45 - 92, 210, 0);
-        tab_obj.localScale = new Vector3(1, 1, 1);
-        tab_obj.Find("Page").localPosition = new Vector3(92 - i * 45, -155, 0);
+        tab_trf.localPosition = new Vector3(i * 45 - 92, 208, 0);
+        tab_trf.localScale = new Vector3(1, 1, 1);
+/*        page_trf.localPosition = new Vector3(0, -155, 0);*/
         if(tab_list[i] == 0){
-            tab_obj.gameObject.GetComponent<Toggle>().interactable = false;
-            tab_obj.Find("Background/text").GetComponent<Text>().color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
+            tab_trf.gameObject.GetComponent<Toggle>().interactable = false;
+            tab_trf.Find("Background/text").GetComponent<Text>().color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
         }
 
-        return tab_obj.gameObject;
+        return tab_trf.gameObject;
     }
 
-    public void CalcColumnMultiplication(int left_num, int right_num, GameObject clm_tab_obj)
+    public void CalcColumnMultiplication(int left_num, int right_num, GameObject clm_page_obj)
     {
         int LTenP = left_num / 10;
         string LTenP_s = LTenP.ToString();
@@ -266,26 +260,38 @@ public class RandomCalcSceneController : MonoBehaviour
         }
 
 
-        clm_tab_obj.transform.Find("Page/LTenP").GetComponent<Text>().text = LTenP_s;
-        clm_tab_obj.transform.Find("Page/LOneP").GetComponent<Text>().text = LOneP_s;
-        clm_tab_obj.transform.Find("Page/RTenP").GetComponent<Text>().text = RTenP_s;
-        clm_tab_obj.transform.Find("Page/ROneP").GetComponent<Text>().text = ROneP_s;
-        clm_tab_obj.transform.Find("Page/1HunP").GetComponent<Text>().text = OHunP_s;
-        clm_tab_obj.transform.Find("Page/1TenP").GetComponent<Text>().text = OTenP_s;
-        clm_tab_obj.transform.Find("Page/1OneP").GetComponent<Text>().text = OOneP_s;
-        clm_tab_obj.transform.Find("Page/2HunP").GetComponent<Text>().text = THunP_s;
-        clm_tab_obj.transform.Find("Page/2TenP").GetComponent<Text>().text = TTenP_s;
-        clm_tab_obj.transform.Find("Page/2OneP").GetComponent<Text>().text = TOneP_s;
-        clm_tab_obj.transform.Find("Page/AThoP").GetComponent<Text>().text = AThoP_s;
-        clm_tab_obj.transform.Find("Page/AHunP").GetComponent<Text>().text = AHunP_s;
-        clm_tab_obj.transform.Find("Page/ATenP").GetComponent<Text>().text = ATenP_s;
-        clm_tab_obj.transform.Find("Page/AOneP").GetComponent<Text>().text = AOneP_s;
-        clm_tab_obj.transform.Find("Page/S1TenP").GetComponent<Text>().text = Sub_OTenP_s;
-        clm_tab_obj.transform.Find("Page/S2TenP").GetComponent<Text>().text = Sub_TTenP_s;
-        clm_tab_obj.transform.Find("Page/SAHunP").GetComponent<Text>().text = Sub_AHunP_s;
-        clm_tab_obj.transform.Find("Page/SAThoP").GetComponent<Text>().text = Sub_AThoP_s;
+        clm_page_obj.transform.Find("LTenP").GetComponent<Text>().text = LTenP_s;
+        clm_page_obj.transform.Find("LOneP").GetComponent<Text>().text = LOneP_s;
+        clm_page_obj.transform.Find("RTenP").GetComponent<Text>().text = RTenP_s;
+        clm_page_obj.transform.Find("ROneP").GetComponent<Text>().text = ROneP_s;
+        clm_page_obj.transform.Find("1HunP").GetComponent<Text>().text = OHunP_s;
+        clm_page_obj.transform.Find("1TenP").GetComponent<Text>().text = OTenP_s;
+        clm_page_obj.transform.Find("1OneP").GetComponent<Text>().text = OOneP_s;
+        clm_page_obj.transform.Find("2HunP").GetComponent<Text>().text = THunP_s;
+        clm_page_obj.transform.Find("2TenP").GetComponent<Text>().text = TTenP_s;
+        clm_page_obj.transform.Find("2OneP").GetComponent<Text>().text = TOneP_s;
+        clm_page_obj.transform.Find("AThoP").GetComponent<Text>().text = AThoP_s;
+        clm_page_obj.transform.Find("AHunP").GetComponent<Text>().text = AHunP_s;
+        clm_page_obj.transform.Find("ATenP").GetComponent<Text>().text = ATenP_s;
+        clm_page_obj.transform.Find("AOneP").GetComponent<Text>().text = AOneP_s;
+        clm_page_obj.transform.Find("S1TenP").GetComponent<Text>().text = Sub_OTenP_s;
+        clm_page_obj.transform.Find("S2TenP").GetComponent<Text>().text = Sub_TTenP_s;
+        clm_page_obj.transform.Find("SAHunP").GetComponent<Text>().text = Sub_AHunP_s;
+        clm_page_obj.transform.Find("SAThoP").GetComponent<Text>().text = Sub_AThoP_s;
 
     }
+
+    public void CalcAddDifProduction(int left_num, int right_num, GameObject clm_page_obj)
+    {
+        int add = (left_num + right_num)/2;
+        int diff = Mathf.Abs(left_num - right_num)/2;
+        clm_page_obj.transform.Find("Text1").GetComponent<Text>().text = "① 和÷2：( " + left_num + " + " + right_num + " )÷2 = " +add + "\n② 差÷2：| "+ left_num + " - " + right_num  + " | ÷2 = " + diff.ToString();
+        clm_page_obj.transform.Find("Text2").GetComponent<Text>().text = "①^2：" + add + "^2 = " + add*add + "\n②^2：" + diff + "^2 = " + diff*diff;
+        clm_page_obj.transform.Find("Text3").GetComponent<Text>().text = "①^2 - ②^2：" + add * add + " - " + diff * diff;
+        clm_page_obj.transform.Find("Text4").GetComponent<Text>().text = " = " + (add * add - diff * diff);
+
+    }
+
 
     public IEnumerator moveObject(GameObject obj, Vector3 targetPosition)
     {
@@ -316,7 +322,8 @@ public class RandomCalcSceneController : MonoBehaviour
         Vector3 position = targetPosition - startPosition;
 
         tab_container.SetActive(true);
-        GameObject.FindWithTag("CoBtn").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
+        GameObject.FindWithTag("CoBtn").transform.localPosition -= new Vector3(0.0f, 20.0f, 0.0f);
+        GameObject.FindWithTag("CoBtnI").transform.localPosition -= new Vector3(0.0f, 20.0f, 0.0f);
         GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = false;
         GameObject.FindWithTag("ClCoBtn").transform.localPosition += new Vector3(0.0f, 200.0f, 0.0f);
 
@@ -344,7 +351,8 @@ public class RandomCalcSceneController : MonoBehaviour
             yield return null;
         }
 
-        GameObject.FindWithTag("CoBtn").transform.localPosition -= new Vector3(0.0f, 20.0f, 0.0f);
+        GameObject.FindWithTag("CoBtn").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
+        GameObject.FindWithTag("CoBtnI").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
         GameObject.FindWithTag("ClCoBtn").transform.localPosition -= new Vector3(0.0f, 200.0f, 0.0f);
         GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = true;
         tab_container.SetActive(false);
@@ -355,4 +363,5 @@ public class RandomCalcSceneController : MonoBehaviour
     {
         yield return time;
     }
+
 }
