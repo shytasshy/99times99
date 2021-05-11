@@ -345,6 +345,11 @@ public class RandomCalcSceneController : MonoBehaviour
         Vector3 startPosition = obj.transform.localPosition;
         Vector3 position = targetPosition - startPosition;
 
+        GameObject.FindWithTag("ClCoBtn").SetActive(false);
+        GameObject.FindWithTag("ClCoBtnI").SetActive(false);
+        GameObject.FindWithTag("CoBtn").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
+        GameObject.FindWithTag("CoBtnI").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
+
         while (currentTime < moveTime)
         {
             currentTime += Time.deltaTime;
@@ -352,17 +357,14 @@ public class RandomCalcSceneController : MonoBehaviour
             obj.transform.localPosition = startPosition + scale * position;
             yield return null;
         }
-        GameObject.FindWithTag("ClCoBtn").SetActive(false);
-        GameObject.FindWithTag("ClCoBtnI").SetActive(false);
-        GameObject.FindWithTag("CoBtn").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
-        GameObject.FindWithTag("CoBtnI").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
+
 /*        GameObject.FindWithTag("ClCoBtn").transform.localPosition -= new Vector3(0.0f, 200.0f, 0.0f);*/
         GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = true;
         tab_container.SetActive(false);
 
     }
 
-   /* public void PushRightButton()
+    public void PushRightButton(GameObject page)
     {
         int i = 1;
         while(page.transform.Find("Objects"+i)!=null)
@@ -379,14 +381,20 @@ public class RandomCalcSceneController : MonoBehaviour
     public void PushLeftButton(GameObject page)
     {
         int i = 1;
+        while(page.transform.Find("Objects"+i)!=null)
         {
-            if (page0.transform.Find("Objects" + i).gameObject.activeSelf == true)
+            i++;
+        }
+        i--;
+        for(int j = i; j > 0; j--)
+        {
+            if (page.transform.Find("Objects" + j).gameObject.activeSelf == true)
             {
-                page0.transform.Find("Objects" + i).gameObject.SetActive(false);
+                page.transform.Find("Objects" + j).gameObject.SetActive(false);
                 return;
             }
         }
-    }*/
+    }
 
     public IEnumerator waitMoment(float time)
     {
