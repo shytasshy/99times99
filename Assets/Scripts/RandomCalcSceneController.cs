@@ -118,7 +118,6 @@ public class RandomCalcSceneController : MonoBehaviour
 
         /*move tab panel*/
         StartCoroutine(moveUpCommentPanel(tab_panel,new Vector3(0.0f,-155.0f,0.0f)));
-        
     }
 
     public void PushCloseCommentButton()
@@ -141,8 +140,8 @@ public class RandomCalcSceneController : MonoBehaviour
 
         Transform tab_trf = tab_container.transform.Find("Tab" + i.ToString());
 
-        tab_trf.localPosition = new Vector3(i * 45 - 92, 208, 0);
-        tab_trf.localScale = new Vector3(1, 1, 1);
+/*        tab_trf.localPosition = new Vector3(i * 40 - 92, 148, 0);
+        tab_trf.localScale = new Vector3(1, 1, 1);*/
         if(tab_list[i] == 0){
             tab_trf.gameObject.GetComponent<Toggle>().interactable = false;
             tab_trf.Find("Background/text").GetComponent<Text>().color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
@@ -385,8 +384,7 @@ public class RandomCalcSceneController : MonoBehaviour
         {
             i++;
         }
-        i--;
-        for(int j = i; j > 0; j--)
+        for(int j = i-1; j > 0; j--)
         {
             if (page.transform.Find("Objects" + j).gameObject.activeSelf == true)
             {
