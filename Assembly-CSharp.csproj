@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Calculator.cs" />
     <Compile Include="Assets\Scripts\QuestionSceneController.cs" />
     <Compile Include="Assets\Scripts\SceneTransition.cs" />
+    <Compile Include="Assets\Scripts\numController.cs" />
     <Compile Include="Assets\Scripts\numHolder.cs" />
     <Compile Include="Assets\Scripts\tabController.cs" />
     <Reference Include="UnityEngine">

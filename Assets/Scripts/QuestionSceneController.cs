@@ -84,26 +84,6 @@ public class QuestionSceneController : MonoBehaviour
 
     }
 
-    public static int get_ans_num()
-    {
-        return ans_num;
-    }
-
-    public static int get_select_num()
-    {
-        return select_num;
-    }
-
-    public static int get_left_num()
-    {
-        return left_num;
-    }
-
-    public static int get_right_num()
-    {
-        return right_num;
-    }
-
     public void PushCommentButton()
     {
         /*tab create*/

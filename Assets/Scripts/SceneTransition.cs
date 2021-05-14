@@ -19,6 +19,8 @@ public class SceneTransition : MonoBehaviour
 
     public void PushRandomCalcSceneButton()
     {
+        numHolder.left_num_random_flag = true;
+        numHolder.right_num_random_flag = true;
         SceneManager.LoadScene("RandomCalcScene");
     }
 

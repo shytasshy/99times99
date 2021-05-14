@@ -1,11 +1,12 @@
 ﻿<Properties StartupConfiguration="{E50DF27A-3045-0435-44AF-451024046454}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/numHolder.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/numSetter.cs">
     <Files>
       <File FileName="Assets/Scripts/SceneTransition.cs" Line="4" Column="35" />
-      <File FileName="Assets/Scripts/RandomCalcSceneController.cs" Line="28" Column="6" />
+      <File FileName="Assets/Scripts/RandomCalcSceneController.cs" Line="232" Column="54" />
       <File FileName="Assets/Scripts/toggleController.cs" Line="34" Column="69" />
       <File FileName="Assets/Scripts/Calculator.cs" Line="21" Column="6" />
-      <File FileName="Assets/Scripts/numHolder.cs" Line="7" Column="17" />
+      <File FileName="Assets/Scripts/numHolder.cs" Line="39" Column="1" />
+      <File FileName="Assets/Scripts/numSetter.cs" Line="4" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,7 +14,7 @@
           <Node name="99times99" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="numHolder.cs" selected="True" />
+                <Node name="numSetter.cs" selected="True" />
               </Node>
             </Node>
           </Node>
