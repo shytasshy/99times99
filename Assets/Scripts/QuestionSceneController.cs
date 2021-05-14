@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RandomCalcSceneController : MonoBehaviour
+public class QuestionSceneController : MonoBehaviour
 {
     [SerializeField] private Text selectnum_text = default;
     [SerializeField] private Text ansnum_text = default;
     [SerializeField] private Text left_num_text = default;
     [SerializeField] private Text right_num_text = default;
     [SerializeField] private GameObject after_checkbutton_object = default;
+
     [SerializeField] private AnimationCurve tabMoveCurve = default;
+
     [SerializeField] private Canvas canvas = default;
     [SerializeField] private GameObject tab_panel = default;
     [SerializeField] private GameObject tab_container = default;
@@ -25,10 +27,9 @@ public class RandomCalcSceneController : MonoBehaviour
     void Start()
     {
         select_num = 0;
-        left_num = Random.Range(1, 100);
-        right_num = Random.Range(1, 100);
+        left_num = numHolder.left_num;
+        right_num = numHolder.right_num;
         ans_num = left_num * right_num;
-        selectnum_text.text = "";
         left_num_text.text = left_num.ToString();
         right_num_text.text = right_num.ToString();
         ansnum_text.text = ans_num.ToString();
@@ -223,6 +224,12 @@ public class RandomCalcSceneController : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void PushLeftLockButton()
+    {
+        numHolder.lock_left_num();
+        Debug.Log(numHolder.left_num_random_flag+"!!!");
     }
 
     public IEnumerator waitMoment(float time)
