@@ -5,6 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - CoBtn
+  - tab1
+  - tab0
+  - tab2
+  - tab3
+  - tab4
+  - TabP
+  - ClCoBtn
+  - TabC
+  - CoBtnI
+  - ClCoBtnI
   layers:
   - Default
   - TransparentFX
@@ -15,7 +25,7 @@ TagManager:
   - 
   - 
   - Tab
-  - 
+  - Tab2
   - 
   - 
   - 
@@ -39,6 +49,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Tab2
+    uniqueID: 4271220783
+    locked: 0
   - name: Tab
     uniqueID: 3352820717
     locked: 0
