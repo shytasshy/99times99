@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class numController : MonoBehaviour
+public class TitleSceneController : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Text ten_num_text = default;
@@ -46,6 +46,13 @@ public class numController : MonoBehaviour
     public void PushSetLeftButton()
     {
         numHolder.set_left_num(ten_num*10+one_num);
-        SceneManager.LoadScene("RandomCalcScene");
+        SceneManager.LoadScene("CalcScene");
+    }
+
+    public void PushRandomCalcButton()
+    {
+        numHolder.left_num_random_flag = true;
+        numHolder.right_num_random_flag = true;
+        SceneManager.LoadScene("CalcScene");
     }
 }

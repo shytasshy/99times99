@@ -66,9 +66,9 @@
     <Compile Include="Assets\Scripts\Calculator.cs" />
     <Compile Include="Assets\Scripts\QuestionSceneController.cs" />
     <Compile Include="Assets\Scripts\SceneTransition.cs" />
-    <Compile Include="Assets\Scripts\numController.cs" />
     <Compile Include="Assets\Scripts\numHolder.cs" />
     <Compile Include="Assets\Scripts\tabController.cs" />
+    <Compile Include="Assets\Scripts\titleSceneController.cs" />
     <Reference Include="UnityEngine">
       <HintPath>/Applications/Unity/Hub/Editor/2019.4.5f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
