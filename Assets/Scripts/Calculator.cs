@@ -160,6 +160,45 @@ public class Calculator : MonoBehaviour
 
     }
 
+    public static void Calc_Square(int num, GameObject Calc_page_obj)
+    {
+        int square = num * num;
+        int first;
+        int second;
+        string formula_text = null;
+        string second_text = null;
+        string third_text = null;
+        string answer_text = null;
 
+        if (num < 25)
+        {
+            Calc_page_obj.transform.Find("Objects0/Default").gameObject.SetActive(true);
+        }
+        else if (num >= 25 && num <= 75)
+        {
+            Calc_page_obj.transform.Find("Objects0/Default").gameObject.SetActive(false);
+            first = (num - 25) * 100;
+            second = (num - 50) * (num - 50);
+            formula_text = "25 ≦ a ≦ 75のとき\n( a - 25 ) * 100 + ( a - 50 )^2";
+            second_text = "( " + (num - 25) + " ) * 100 + ( " + (num - 50) + " )^2";
+            third_text = "= " + first + " + " + second;
+            answer_text = "= " + square;
+        }
+        else if (num > 75)
+        {
+            Calc_page_obj.transform.Find("Objects0/Default").gameObject.SetActive(false);
+            first = (2 * num - 100) * 100;
+            second = (num - 100) * (num - 100);
+            formula_text = "a > 75のとき\n( 2a - 100 ) * 100 + ( a - 100 ) ^2";
+            second_text = "( " + (2 * num - 100) + " ) * 100 + ( " + (num - 100) + " )^2";
+            third_text = "= " + first + " + " + second;
+            answer_text = "= " + square;
+        }
+
+        Calc_page_obj.transform.Find("Objects0/Formula").GetComponent<Text>().text = formula_text;
+        Calc_page_obj.transform.Find("Objects0/SecFormula").GetComponent<Text>().text = second_text;
+        Calc_page_obj.transform.Find("Objects0/ThiFormula").GetComponent<Text>().text = third_text;
+        Calc_page_obj.transform.Find("Objects0/AnsFormula").GetComponent<Text>().text = answer_text;
+    }
 
 }

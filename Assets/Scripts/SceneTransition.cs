@@ -19,7 +19,7 @@ public class SceneTransition : MonoBehaviour
 
     public void PushRandomCalcSceneButton()
     {
-        SceneManager.LoadScene("CalcScene");
+        SceneManager.LoadScene("QuestionScene");
     }
 
     public void PushTitleSceneButton()

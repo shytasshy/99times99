@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class QuestionSceneController : MonoBehaviour
 {
@@ -17,18 +18,19 @@ public class QuestionSceneController : MonoBehaviour
     [SerializeField] private GameObject tab_panel = default;
     [SerializeField] private GameObject tab_container = default;
     [SerializeField] private GameObject page_container = default;
-    [SerializeField] private GameObject page0 = default;
-    public static int ans_num;
-    public static int select_num;
-    public static int left_num;
-    public static int right_num;
-    public static List<int> tab_flag_list;
-    public static List<GameObject> tab_list;
+    public int ans_num;
+    public int select_num;
+    public int left_num;
+    public int right_num;
+    public int num_for_square; 
+    public List<int> tab_flag_list;
+    public List<GameObject> tab_list;
     void Start()
     {
         select_num = 0;
         left_num = numHolder.left_num;
         right_num = numHolder.right_num;
+        num_for_square = numHolder.num_for_square;
         ans_num = left_num * right_num;
         left_num_text.text = left_num.ToString();
         right_num_text.text = right_num.ToString();
@@ -91,9 +93,15 @@ public class QuestionSceneController : MonoBehaviour
         tab_list = tabController.get_TabList(tab_flag_list, tab_container);
         tab_list[0].GetComponent<Toggle>().isOn = true;
         tab_list[0].GetComponent<Toggle>().Select();
-        Calculator.Calc_ColumnMultiplication(left_num, right_num, page_container.transform.Find("Page0").gameObject);
-        Calculator.Calc_AddDifProduction(left_num, right_num, page_container.transform.Find("Page1").gameObject);
-
+        if (SceneManager.GetActiveScene().name == "SquareCalcScene")
+        {
+            Calculator.Calc_Square(num_for_square, page_container.transform.Find("Page0").gameObject);
+        }
+        else if (SceneManager.GetActiveScene().name == "QuestionScene")
+        {
+            Calculator.Calc_ColumnMultiplication(left_num, right_num, page_container.transform.Find("Page0").gameObject);
+            Calculator.Calc_AddDifProduction(left_num, right_num, page_container.transform.Find("Page1").gameObject);
+        }
         /*move tab panel*/
         StartCoroutine(moveUpCommentPanel(tab_panel,new Vector3(0.0f,-155.0f,0.0f)));
     }
@@ -209,7 +217,7 @@ public class QuestionSceneController : MonoBehaviour
     public void PushLeftLockButton()
     {
         numHolder.lock_left_num();
-        Debug.Log(numHolder.left_num_random_flag+"!!!");
+        Debug.Log(numHolder.left_num_is_random+"!!!");
     }
 
     public IEnumerator waitMoment(float time)

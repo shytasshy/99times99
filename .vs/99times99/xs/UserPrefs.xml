@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{E50DF27A-3045-0435-44AF-451024046454}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/numSetter.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SquarenumHolder.cs">
     <Files>
-      <File FileName="Assets/Scripts/SceneTransition.cs" Line="4" Column="35" />
-      <File FileName="Assets/Scripts/RandomCalcSceneController.cs" Line="232" Column="54" />
+      <File FileName="Assets/Scripts/SceneTransition.cs" Line="22" Column="41" />
+      <File FileName="Assets/Scripts/RandomCalcSceneController.cs" Line="31" Column="2" />
       <File FileName="Assets/Scripts/toggleController.cs" Line="34" Column="69" />
-      <File FileName="Assets/Scripts/Calculator.cs" Line="21" Column="6" />
-      <File FileName="Assets/Scripts/numHolder.cs" Line="39" Column="1" />
-      <File FileName="Assets/Scripts/numSetter.cs" Line="4" Column="20" />
+      <File FileName="Assets/Scripts/Calculator.cs" Line="6" Column="14" />
+      <File FileName="Assets/Scripts/numHolder.cs" Line="18" Column="35" />
+      <File FileName="Assets/Scripts/numSetter.cs" Line="56" Column="41" />
+      <File FileName="Assets/Scripts/SquarenumHolder.cs" Line="24" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,7 +15,7 @@
           <Node name="99times99" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="numSetter.cs" selected="True" />
+                <Node name="SquarenumHolder.cs" selected="True" />
               </Node>
             </Node>
           </Node>

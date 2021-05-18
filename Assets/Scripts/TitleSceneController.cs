@@ -46,13 +46,13 @@ public class TitleSceneController : MonoBehaviour
     public void PushSetLeftButton()
     {
         numHolder.set_left_num(ten_num*10+one_num);
-        SceneManager.LoadScene("CalcScene");
+        SceneManager.LoadScene("QuestionScene");
     }
 
     public void PushRandomCalcButton()
     {
-        numHolder.left_num_random_flag = true;
-        numHolder.right_num_random_flag = true;
-        SceneManager.LoadScene("CalcScene");
+        numHolder.left_num_is_random = true;
+        numHolder.right_num_is_random = true;
+        SceneManager.LoadScene("QuestionScene");
     }
 }
