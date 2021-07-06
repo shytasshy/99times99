@@ -9,6 +9,7 @@ public class numHolder : MonoBehaviour
     public static int num_for_square;
     public static bool left_num_is_random=true;
     public static bool right_num_is_random=true;
+    public static bool Square_display = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,4 +46,15 @@ public class numHolder : MonoBehaviour
         right_num_is_random = false;
     }
 
+    public static void set_Square_display()
+    {
+        if (Square_display)
+        {
+            Square_display = false;
+        }
+        else
+        {
+            Square_display = true;
+        }
+    }
 }

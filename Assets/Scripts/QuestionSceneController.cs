@@ -10,18 +10,21 @@ public class QuestionSceneController : MonoBehaviour
     [SerializeField] private Text ansnum_text = default;
     [SerializeField] private Text left_num_text = default;
     [SerializeField] private Text right_num_text = default;
+    [SerializeField] private Text center_num_text = default;
     [SerializeField] private GameObject after_checkbutton_object = default;
 
     [SerializeField] private AnimationCurve tabMoveCurve = default;
 
     [SerializeField] private Canvas canvas = default;
     [SerializeField] private GameObject tab_panel = default;
+    [SerializeField] private GameObject display_panel = default;
     [SerializeField] private GameObject tab_container = default;
     [SerializeField] private GameObject page_container = default;
     public int ans_num;
     public int select_num;
     public int left_num;
     public int right_num;
+    public int center_num;
     public List<bool> tab_flag_list;
     public List<GameObject> tab_list;
     void Start()
@@ -34,11 +37,22 @@ public class QuestionSceneController : MonoBehaviour
             left_num = numHolder.left_num;
             right_num = numHolder.right_num;
         }
-        else if(SceneManager.GetActiveScene().name == "SquareScene")
+        else if (SceneManager.GetActiveScene().name == "SquareScene")
         {
-            Debug.Log("start");
+            if (numHolder.Square_display)
+            {
+                display_panel.transform.Find("Objects0").gameObject.SetActive(false);
+                display_panel.transform.Find("Objects1").gameObject.SetActive(true);
+            }
+            else
+            {
+                display_panel.transform.Find("Objects0").gameObject.SetActive(true);
+                display_panel.transform.Find("Objects1").gameObject.SetActive(false);
+            }
             left_num = numHolder.num_for_square;
             right_num = numHolder.num_for_square;
+            center_num = numHolder.num_for_square;
+            center_num_text.text = center_num.ToString();
         }
 
         left_num_text.text = left_num.ToString();
@@ -237,6 +251,21 @@ public class QuestionSceneController : MonoBehaviour
     public IEnumerator waitMoment(float time)
     {
         yield return time;
+    }
+
+    public void PushSquareDisplayButton()
+    {
+        numHolder.set_Square_display();
+        if (numHolder.Square_display)
+        {
+            display_panel.transform.Find("Objects0").gameObject.SetActive(false);
+            display_panel.transform.Find("Objects1").gameObject.SetActive(true);
+        }
+        else
+        {
+            display_panel.transform.Find("Objects0").gameObject.SetActive(true);
+            display_panel.transform.Find("Objects1").gameObject.SetActive(false);
+        }
     }
 
 }
