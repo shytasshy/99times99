@@ -12,12 +12,12 @@ public class tabController : MonoBehaviour
     }
 
     // Update is called once per frame
-    public static GameObject SetTabObject(int i, List<int> tab_list, GameObject tab_container)
+    public static GameObject SetTabObject(int i, List<bool> tab_flag_list, GameObject tab_container)
     {
 
         Transform tab_trf = tab_container.transform.Find("Tab" + i.ToString());
 
-        if (tab_list[i] == 0)
+        if (tab_flag_list[i] == false)
         {
             tab_trf.gameObject.GetComponent<Toggle>().interactable = false;
             tab_trf.Find("Background/text").GetComponent<Text>().color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
@@ -26,7 +26,7 @@ public class tabController : MonoBehaviour
         return tab_trf.gameObject;
     }
 
-    public static List<GameObject> get_TabList(List<int> tab_flag_list, GameObject tab_container)
+    public static List<GameObject> get_TabList(List<bool> tab_flag_list, GameObject tab_container)
     {
         List<GameObject> tab_list = new List<GameObject>();
         for (int i = 0; i < tab_flag_list.Count; i++)

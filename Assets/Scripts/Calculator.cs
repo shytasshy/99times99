@@ -11,12 +11,13 @@ public class Calculator : MonoBehaviour
 
     }
 
-    public static List<int> Calc_tab_num(int left_num, int right_num)
+    public static List<bool> Calc_tab_num(int left_num, int right_num)
     {
-        List<int> tab_flag_list = new List<int>();
-        tab_flag_list.Add(1);
-        tab_flag_list.Add((left_num + right_num) % 2 == 1 ? 0 : 1);
-        tab_flag_list.Add(1);
+        List<bool> tab_flag_list = new List<bool>();
+        tab_flag_list.Add(true);//筆算
+        tab_flag_list.Add((left_num + right_num) % 2 == 1 ? false : true);//和と差の積
+        tab_flag_list.Add(true);//
+        Debug.Log(tab_flag_list);
         return tab_flag_list;
     }
 

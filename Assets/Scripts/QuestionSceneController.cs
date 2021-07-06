@@ -23,7 +23,7 @@ public class QuestionSceneController : MonoBehaviour
     public int left_num;
     public int right_num;
     public int num_for_square; 
-    public List<int> tab_flag_list;
+    public List<bool> tab_flag_list;
     public List<GameObject> tab_list;
     void Start()
     {
@@ -89,10 +89,16 @@ public class QuestionSceneController : MonoBehaviour
     public void PushCommentButton()
     {
         /*tab create*/
+        //tab_flag_list：n番目の解法が使えるならtrue
+        //tab_list：使える解法のTab_nのtransform
         tab_flag_list = Calculator.Calc_tab_num(left_num,right_num);
+
         tab_list = tabController.get_TabList(tab_flag_list, tab_container);
+
         tab_list[0].GetComponent<Toggle>().isOn = true;
         tab_list[0].GetComponent<Toggle>().Select();
+
+        //2乗モードか通常モードごとに解説欄を計算
         if (SceneManager.GetActiveScene().name == "SquareCalcScene")
         {
             Calculator.Calc_Square(num_for_square, page_container.transform.Find("Page0").gameObject);
@@ -109,7 +115,7 @@ public class QuestionSceneController : MonoBehaviour
     public void PushCloseCommentButton()
     {
         /*move tab panel*/
-        StartCoroutine(moveDownCommentPanel(tab_panel, new Vector3(0.0f, -485.0f, 90.0f)));
+        StartCoroutine(moveDownCommentPanel(tab_panel, new Vector3(0.0f, -440.0f, 90.0f)));
     }
 
     public IEnumerator moveObject(GameObject obj, Vector3 targetPosition)
@@ -146,7 +152,6 @@ public class QuestionSceneController : MonoBehaviour
         GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = false;
         tab_panel.transform.Find("CloseCommentButton").gameObject.SetActive(true);
         tab_panel.transform.Find("CloseCommentButtonImage").gameObject.SetActive(true);
-/*        GameObject.FindWithTag("ClCoBtn").transform.localPosition += new Vector3(0.0f, 200.0f, 0.0f);*/
 
         while (currentTime < moveTime)
         {
@@ -177,7 +182,6 @@ public class QuestionSceneController : MonoBehaviour
             yield return null;
         }
 
-/*        GameObject.FindWithTag("ClCoBtn").transform.localPosition -= new Vector3(0.0f, 200.0f, 0.0f);*/
         GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = true;
         tab_container.SetActive(false);
 
