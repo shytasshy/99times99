@@ -22,20 +22,30 @@ public class QuestionSceneController : MonoBehaviour
     public int select_num;
     public int left_num;
     public int right_num;
-    public int num_for_square; 
     public List<bool> tab_flag_list;
     public List<GameObject> tab_list;
     void Start()
     {
         select_num = 0;
-        left_num = numHolder.left_num;
-        right_num = numHolder.right_num;
-        num_for_square = numHolder.num_for_square;
-        ans_num = left_num * right_num;
+        tab_list = new List<GameObject>();
+        Debug.Log(SceneManager.GetActiveScene().name);
+        if (SceneManager.GetActiveScene().name == "QuestionScene")
+        {
+            left_num = numHolder.left_num;
+            right_num = numHolder.right_num;
+        }
+        else if(SceneManager.GetActiveScene().name == "SquareScene")
+        {
+            Debug.Log("start");
+            left_num = numHolder.num_for_square;
+            right_num = numHolder.num_for_square;
+        }
+
         left_num_text.text = left_num.ToString();
         right_num_text.text = right_num.ToString();
+
+        ans_num = left_num * right_num;
         ansnum_text.text = ans_num.ToString();
-        tab_list = new List<GameObject>();
     }
 
     public void PushNumButton(int number)
@@ -99,9 +109,9 @@ public class QuestionSceneController : MonoBehaviour
         tab_list[0].GetComponent<Toggle>().Select();
 
         //2乗モードか通常モードごとに解説欄を計算
-        if (SceneManager.GetActiveScene().name == "SquareCalcScene")
+        if (SceneManager.GetActiveScene().name == "SquareScene")
         {
-            Calculator.Calc_Square(num_for_square, page_container.transform.Find("Page0").gameObject);
+            Calculator.Calc_Square(left_num, page_container.transform.Find("Page0").gameObject);
         }
         else if (SceneManager.GetActiveScene().name == "QuestionScene")
         {

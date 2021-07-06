@@ -173,10 +173,13 @@ public class Calculator : MonoBehaviour
 
         if (num < 25)
         {
+            Debug.Log("a");
             Calc_page_obj.transform.Find("Objects0/Default").gameObject.SetActive(true);
+            Debug.Log("a_fin");
         }
         else if (num >= 25 && num <= 75)
         {
+            Debug.Log("b");
             Calc_page_obj.transform.Find("Objects0/Default").gameObject.SetActive(false);
             first = (num - 25) * 100;
             second = (num - 50) * (num - 50);
@@ -184,9 +187,11 @@ public class Calculator : MonoBehaviour
             second_text = "( " + (num - 25) + " ) * 100 + ( " + (num - 50) + " )^2";
             third_text = "= " + first + " + " + second;
             answer_text = "= " + square;
+            Debug.Log("b_fin");
         }
         else if (num > 75)
         {
+            Debug.Log("c");
             Calc_page_obj.transform.Find("Objects0/Default").gameObject.SetActive(false);
             first = (2 * num - 100) * 100;
             second = (num - 100) * (num - 100);
@@ -194,12 +199,13 @@ public class Calculator : MonoBehaviour
             second_text = "( " + (2 * num - 100) + " ) * 100 + ( " + (num - 100) + " )^2";
             third_text = "= " + first + " + " + second;
             answer_text = "= " + square;
+            Debug.Log("c_fin");
         }
 
-        Calc_page_obj.transform.Find("Objects0/Formula").GetComponent<Text>().text = formula_text;
-        Calc_page_obj.transform.Find("Objects0/SecFormula").GetComponent<Text>().text = second_text;
-        Calc_page_obj.transform.Find("Objects0/ThiFormula").GetComponent<Text>().text = third_text;
-        Calc_page_obj.transform.Find("Objects0/AnsFormula").GetComponent<Text>().text = answer_text;
+        Calc_page_obj.transform.Find("Objects0/Formula1").GetComponent<Text>().text = formula_text;
+        Calc_page_obj.transform.Find("Objects0/Formula2").GetComponent<Text>().text = second_text;
+        Calc_page_obj.transform.Find("Objects0/Formula3").GetComponent<Text>().text = third_text;
+        Calc_page_obj.transform.Find("Objects0/Ans").GetComponent<Text>().text = answer_text;
     }
 
 }

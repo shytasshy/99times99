@@ -8,27 +8,29 @@ public class SceneTransition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    public void PushRandomCalcSceneButton()
+
+    public void LoadRandomCalcScene()
     {
         SceneManager.LoadScene("QuestionScene");
     }
 
-    public void PushTitleSceneButton()
+    public void LoadTitleScene()
     {
         SceneManager.LoadScene("TitleScene");
     }
 
-    public void PushCommentSceneButton()
+    public void LoadSquareScene()
     {
-        SceneManager.LoadScene("CommentScene");
+        SceneManager.LoadScene("SquareScene");
+    }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

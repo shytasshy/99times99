@@ -1543,7 +1543,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 540179313}
-        m_MethodName: PushRandomCalcSceneButton
+        m_MethodName: ReloadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3113,7 +3113,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 540179313}
-        m_MethodName: PushTitleSceneButton
+        m_MethodName: LoadTitleScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10048,7 +10048,6 @@ MonoBehaviour:
   select_num: 0
   left_num: 0
   right_num: 0
-  num_for_square: 0
   tab_flag_list: 
   tab_list: []
 --- !u!4 &1735436370
