@@ -64,6 +64,10 @@ public class QuestionSceneController : MonoBehaviour
 
     public void PushNumButton(int number)
     {
+        if(selectnum_text.text == "0")
+        {
+            return;
+        }
         selectnum_text.text = selectnum_text.text + number.ToString();
     }
 
