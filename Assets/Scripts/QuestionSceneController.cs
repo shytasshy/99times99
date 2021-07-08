@@ -32,7 +32,7 @@ public class QuestionSceneController : MonoBehaviour
         select_num = 0;
         tab_list = new List<GameObject>();
         Debug.Log(SceneManager.GetActiveScene().name);
-        if (SceneManager.GetActiveScene().name == "QuestionScene")
+        if (SceneManager.GetActiveScene().name == "RandomCalcScene")
         {
             left_num = numHolder.left_num;
             right_num = numHolder.right_num;
@@ -45,7 +45,7 @@ public class QuestionSceneController : MonoBehaviour
                 right_num_text.gameObject.transform.Find("frame").gameObject.SetActive(true);
             }
         }
-        else if (SceneManager.GetActiveScene().name == "SquareScene")
+        else if (SceneManager.GetActiveScene().name == "SquareCalcScene")
         {
             if (numHolder.Square_display)
             {
@@ -139,11 +139,11 @@ public class QuestionSceneController : MonoBehaviour
         tab_list[0].GetComponent<Toggle>().Select();
 
         //2乗モードか通常モードごとに解説欄を計算
-        if (SceneManager.GetActiveScene().name == "SquareScene")
+        if (SceneManager.GetActiveScene().name == "SquareCalcScene")
         {
             Calculator.Calc_Square(left_num, page_container.transform.Find("Page0").gameObject);
         }
-        else if (SceneManager.GetActiveScene().name == "QuestionScene")
+        else if (SceneManager.GetActiveScene().name == "RandomCalcScene")
         {
             Calculator.Calc_ColumnMultiplication(left_num, right_num, page_container.transform.Find("Page0").gameObject);
             Calculator.Calc_AddDifProduction(left_num, right_num, page_container.transform.Find("Page1").gameObject);

@@ -16,7 +16,7 @@ public class SceneTransition : MonoBehaviour
 
     public void LoadRandomCalcScene()
     {
-        SceneManager.LoadScene("QuestionScene");
+        SceneManager.LoadScene("RandomCalcScene");
     }
 
     public void LoadTitleScene()
@@ -26,7 +26,7 @@ public class SceneTransition : MonoBehaviour
 
     public void LoadSquareScene()
     {
-        SceneManager.LoadScene("SquareScene");
+        SceneManager.LoadScene("SquareCalcScene");
     }
 
     public void ReloadScene()
