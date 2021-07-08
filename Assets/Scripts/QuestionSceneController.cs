@@ -36,6 +36,14 @@ public class QuestionSceneController : MonoBehaviour
         {
             left_num = numHolder.left_num;
             right_num = numHolder.right_num;
+            if(numHolder.left_num_is_random == false)
+            {
+                left_num_text.gameObject.transform.Find("frame").gameObject.SetActive(true);
+            }
+            if(numHolder.right_num_is_random == false)
+            {
+                right_num_text.gameObject.transform.Find("frame").gameObject.SetActive(true);
+            }
         }
         else if (SceneManager.GetActiveScene().name == "SquareScene")
         {
@@ -66,6 +74,10 @@ public class QuestionSceneController : MonoBehaviour
     {
         if(selectnum_text.text == "0")
         {
+            if(number != 0)
+            {
+                selectnum_text.text = number.ToString();
+            }
             return;
         }
         selectnum_text.text = selectnum_text.text + number.ToString();
@@ -249,7 +261,27 @@ public class QuestionSceneController : MonoBehaviour
     public void PushLeftLockButton()
     {
         numHolder.lock_left_num();
-        Debug.Log(numHolder.left_num_is_random+"!!!");
+        if (numHolder.left_num_is_random)
+        {
+            left_num_text.gameObject.transform.Find("frame").gameObject.SetActive(false);
+        }
+        else
+        {
+            left_num_text.gameObject.transform.Find("frame").gameObject.SetActive(true);
+        }
+    }
+
+    public void PushRightLockButton()
+    {
+        numHolder.lock_right_num();
+        if(numHolder.right_num_is_random)
+        {
+            right_num_text.gameObject.transform.Find("frame").gameObject.SetActive(false);
+        }
+        else
+        {
+            right_num_text.gameObject.transform.Find("frame").gameObject.SetActive(true);
+        }
     }
 
     public IEnumerator waitMoment(float time)
