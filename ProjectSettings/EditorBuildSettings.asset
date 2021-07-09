@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/RandomCalcScene.unity
     guid: 03221b3c94d57194f896b0056c40b14e
   - enabled: 1
-    path: Assets/Scenes/CommentScene.unity
-    guid: fd212a74e745da440aa9b06a7c7c8f5b
+    path: Assets/Scenes/SquareCalcScene.unity
+    guid: 1409812a73d32408dbdc7842ada7d7aa
   m_configObjects: {}
