@@ -2847,6 +2847,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e8460f05dba9d489340cc571c4bfa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetCamera: {fileID: 540179311}
+  aspectVec: {x: 2436, y: 1125}
 --- !u!1 &544333470
 GameObject:
   m_ObjectHideFlags: 0
