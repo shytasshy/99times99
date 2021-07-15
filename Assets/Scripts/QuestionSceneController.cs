@@ -149,13 +149,13 @@ public class QuestionSceneController : MonoBehaviour
             Calculator.Calc_AddDifProduction(left_num, right_num, page_container.transform.Find("Page1").gameObject);
         }
         /*move tab panel*/
-        StartCoroutine(moveUpCommentPanel(tab_panel,new Vector3(0.0f,-155.0f,0.0f)));
+        StartCoroutine(moveUpCommentPanel(tab_panel,new Vector3(0.0f,-651.0f,0.0f)));
     }
 
     public void PushCloseCommentButton()
     {
         /*move tab panel*/
-        StartCoroutine(moveDownCommentPanel(tab_panel, new Vector3(0.0f, -440.0f, 90.0f)));
+        StartCoroutine(moveDownCommentPanel(tab_panel, new Vector3(0.0f, -1850.0f, 90.0f)));
     }
 
     public IEnumerator moveObject(GameObject obj, Vector3 targetPosition)
@@ -187,8 +187,8 @@ public class QuestionSceneController : MonoBehaviour
         Vector3 position = targetPosition - startPosition;
 
         tab_container.SetActive(true);
-        GameObject.FindWithTag("CoBtn").transform.localPosition -= new Vector3(0.0f, 20.0f, 0.0f);
-        GameObject.FindWithTag("CoBtnI").transform.localPosition -= new Vector3(0.0f, 20.0f, 0.0f);
+        GameObject.FindWithTag("CoBtn").transform.localPosition -= new Vector3(0.0f, 84.0f, 0.0f);
+        GameObject.FindWithTag("CoBtnI").transform.localPosition -= new Vector3(0.0f, 84.0f, 0.0f);
         GameObject.FindWithTag("CoBtn").GetComponent<Button>().interactable = false;
         tab_panel.transform.Find("CloseCommentButton").gameObject.SetActive(true);
         tab_panel.transform.Find("CloseCommentButtonImage").gameObject.SetActive(true);
@@ -211,8 +211,8 @@ public class QuestionSceneController : MonoBehaviour
 
         GameObject.FindWithTag("ClCoBtn").SetActive(false);
         GameObject.FindWithTag("ClCoBtnI").SetActive(false);
-        GameObject.FindWithTag("CoBtn").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
-        GameObject.FindWithTag("CoBtnI").transform.localPosition += new Vector3(0.0f, 20.0f, 0.0f);
+        GameObject.FindWithTag("CoBtn").transform.localPosition += new Vector3(0.0f, 84.0f, 0.0f);
+        GameObject.FindWithTag("CoBtnI").transform.localPosition += new Vector3(0.0f, 84.0f, 0.0f);
 
         while (currentTime < moveTime)
         {

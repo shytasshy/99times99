@@ -19,7 +19,7 @@ public class PushButtonController : MonoBehaviour
     public void OnButtonDown()
     {
         buttonDownFlag = true;
-        this.gameObject.transform.localPosition += new Vector3(0.0f, -2.0f);
+        this.gameObject.transform.localPosition += new Vector3(0.0f, -9.0f);
         this.gameObject.GetComponent<UnityEngine.UI.Shadow>().effectDistance = new Vector2(0.0f, 0.0f);
     }
 
@@ -28,8 +28,8 @@ public class PushButtonController : MonoBehaviour
         if (buttonDownFlag)
         {
             buttonDownFlag = false;
-            this.gameObject.transform.localPosition += new Vector3(0.0f, 2.0f);
-            this.gameObject.GetComponent<UnityEngine.UI.Shadow>().effectDistance = new Vector2(0.0f, -2.0f);
+            this.gameObject.transform.localPosition += new Vector3(0.0f, 9.0f);
+            this.gameObject.GetComponent<UnityEngine.UI.Shadow>().effectDistance = new Vector2(0.0f, -9.0f);
         }
     }
 
@@ -38,8 +38,8 @@ public class PushButtonController : MonoBehaviour
         if (buttonDownFlag)
         {
             buttonDownFlag = false;
-            this.gameObject.transform.localPosition += new Vector3(0.0f, 2.0f);
-            this.gameObject.GetComponent<UnityEngine.UI.Shadow>().effectDistance = new Vector2(0.0f, -2.0f);
+            this.gameObject.transform.localPosition += new Vector3(0.0f, 9.0f);
+            this.gameObject.GetComponent<UnityEngine.UI.Shadow>().effectDistance = new Vector2(0.0f, -9.0f);
         }
     }
 }
