@@ -500,6 +500,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e8460f05dba9d489340cc571c4bfa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetCamera: {fileID: 519420031}
+  aspectVec: {x: 1125, y: 2436}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
