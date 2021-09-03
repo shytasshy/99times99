@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class SceneTransition : MonoBehaviour
 {
     [SerializeField] private Camera targetCamera;
@@ -40,7 +41,7 @@ public class SceneTransition : MonoBehaviour
 
     public void LoadRandomCalcScene()
     {
-        SceneManager.LoadScene("RandomCalcScene");
+        SceneManager.LoadScene("CalculatorScene");
     }
 
     public void LoadTitleScene()
@@ -50,7 +51,7 @@ public class SceneTransition : MonoBehaviour
 
     public void LoadSquareScene()
     {
-        SceneManager.LoadScene("SquareCalcScene");
+        SceneManager.LoadScene("SquareCalculatorScene");
     }
 
     public void ReloadScene()

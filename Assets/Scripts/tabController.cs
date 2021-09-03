@@ -12,28 +12,28 @@ public class tabController : MonoBehaviour
     }
 
     // Update is called once per frame
-    public static GameObject SetTabObject(int i, List<bool> tab_flag_list, GameObject tab_container)
+    public static GameObject CreateTab(int tabNumber, List<bool> createTabList, GameObject tabContainer)
     {
 
-        Transform tab_trf = tab_container.transform.Find("Tab" + i.ToString());
+        Transform tabTransform = tabContainer.transform.Find("Tab" + tabNumber.ToString());
 
-        if (tab_flag_list[i] == false)
+        if (createTabList[tabNumber] == false)
         {
-            tab_trf.gameObject.GetComponent<Toggle>().interactable = false;
-            tab_trf.Find("Background/text").GetComponent<Text>().color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
+            tabTransform.gameObject.GetComponent<Toggle>().interactable = false;
+            tabTransform.Find("Background/text").GetComponent<Text>().color = new Color(0.0f, 0.0f, 0.0f, 0.5f);
         }
 
-        return tab_trf.gameObject;
+        return tabTransform.gameObject;
     }
 
-    public static List<GameObject> get_TabList(List<bool> tab_flag_list, GameObject tab_container)
+    public static List<GameObject> CreateTabList(List<bool> createTabList, GameObject tabContainer)
     {
-        List<GameObject> tab_list = new List<GameObject>();
-        for (int i = 0; i < tab_flag_list.Count; i++)
+        List<GameObject> tabList = new List<GameObject>();
+        for (int i = 0; i < createTabList.Count; i++)
         {
-            tab_list.Add(SetTabObject(i, tab_flag_list,tab_container));
+            tabList.Add(CreateTab(i, createTabList,tabContainer));
         }
-        return tab_list;
+        return tabList;
     }
 
 }

@@ -7,57 +7,57 @@ using UnityEngine.SceneManagement;
 public class TitleSceneController : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private Text ten_num_text = default;
-    [SerializeField] private Text one_num_text = default;
-    public static int ten_num = 5;
-    public static int one_num = 0;
+    [SerializeField] private Text tenPlaceText = default;
+    [SerializeField] private Text onePlaceText = default;
+    public static int tenPlaceNumber = 5;
+    public static int onePlaceNumber = 0;
 
     void Start()
     {
-        ten_num_text.text = ten_num.ToString();
-        one_num_text.text = one_num.ToString();
+        tenPlaceText.text = tenPlaceNumber.ToString();
+        onePlaceText.text = onePlaceNumber.ToString();
     }
 
-    public void PushTenUpButton()
+    public void OnTenUpButton()
     {
-        ten_num = ten_num != 9 ? ten_num + 1 : 0;
-        ten_num_text.text = ten_num.ToString();
+        tenPlaceNumber = tenPlaceNumber != 9 ? tenPlaceNumber + 1 : 0;
+        tenPlaceText.text = tenPlaceNumber.ToString();
     }
 
-    public void PushTenDownButton()
+    public void OnTenDownButton()
     {
-        ten_num = ten_num != 0 ? ten_num - 1 : 9;
-        ten_num_text.text = ten_num.ToString();
+        tenPlaceNumber = tenPlaceNumber != 0 ? tenPlaceNumber - 1 : 9;
+        tenPlaceText.text = tenPlaceNumber.ToString();
     }
 
-    public void PushOneUpButton()
+    public void OnOneUpButton()
     {
-        one_num = one_num != 9 ? one_num + 1 : 0;
-        one_num_text.text = one_num.ToString();
+        onePlaceNumber = onePlaceNumber != 9 ? onePlaceNumber + 1 : 0;
+        onePlaceText.text = onePlaceNumber.ToString();
     }
 
-    public void PushOneDownButton()
+    public void OnOneDownButton()
     {
-        one_num = one_num != 0 ? one_num - 1 : 9;
-        one_num_text.text = one_num.ToString();
+        onePlaceNumber = onePlaceNumber != 0 ? onePlaceNumber - 1 : 9;
+        onePlaceText.text = onePlaceNumber.ToString();
     }
 
     // Update is called once per frame
-    public void PushSetLeftButton()
+    public void OnSetCalculatorButton()
     {
-        numHolder.set_left_num(ten_num*10+one_num);
-        SceneManager.LoadScene("RandomCalcScene");
+        numHolder.SetLeftNumber(tenPlaceNumber*10+onePlaceNumber);
+        SceneManager.LoadScene("CalculatorScene");
     }
 
-    public void PushRandomCalcButton()
+    public void OnRandomCalculatorButton()
     {
-        numHolder.left_num_is_random = true;
-        numHolder.right_num_is_random = true;
-        SceneManager.LoadScene("RandomCalcScene");
+        numHolder.leftNumberIsRandom = true;
+        numHolder.rightNumberIsRandom = true;
+        SceneManager.LoadScene("CalculatorScene");
     }
 
-    public void PushSquareCalcButton()
+    public void OnSquareCalculaorButton()
     {
-        SceneManager.LoadScene("SquareCalcScene");
+        SceneManager.LoadScene("SquareCalculatorScene");
     }
 }
