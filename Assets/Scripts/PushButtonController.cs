@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PushButtonController : MonoBehaviour
 {
-    private bool buttonDownFlag = false;
+    private bool _buttonDownFlag = false;
     // Update is called once per frame
     void Start()
     {
@@ -18,16 +18,16 @@ public class PushButtonController : MonoBehaviour
 
     public void OnButtonDown()
     {
-        buttonDownFlag = true;
+        _buttonDownFlag = true;
         this.gameObject.transform.localPosition += new Vector3(0.0f, -9.0f);
         this.gameObject.GetComponent<UnityEngine.UI.Shadow>().effectDistance = new Vector2(0.0f, 0.0f);
     }
 
     public void OnButtonUp()
     {
-        if (buttonDownFlag)
+        if (_buttonDownFlag)
         {
-            buttonDownFlag = false;
+            _buttonDownFlag = false;
             this.gameObject.transform.localPosition += new Vector3(0.0f, 9.0f);
             this.gameObject.GetComponent<UnityEngine.UI.Shadow>().effectDistance = new Vector2(0.0f, -9.0f);
         }
@@ -35,9 +35,9 @@ public class PushButtonController : MonoBehaviour
 
     public void OnButtonExit()
     {
-        if (buttonDownFlag)
+        if (_buttonDownFlag)
         {
-            buttonDownFlag = false;
+            _buttonDownFlag = false;
             this.gameObject.transform.localPosition += new Vector3(0.0f, 9.0f);
             this.gameObject.GetComponent<UnityEngine.UI.Shadow>().effectDistance = new Vector2(0.0f, -9.0f);
         }

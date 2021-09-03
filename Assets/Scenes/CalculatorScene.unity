@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 13711976}
   - component: {fileID: 13711975}
   m_Layer: 5
-  m_Name: LeftNumber
+  m_Name: LeftNumberText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -619,7 +619,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushNumButton
+        m_MethodName: OnNumberButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -849,7 +849,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushRightLockButton
+        m_MethodName: OnRightLockButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1452,7 +1452,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushNumButton
+        m_MethodName: OnNumberButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1733,7 +1733,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushRightButton
+        m_MethodName: OnRightButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1827398574}
@@ -2089,7 +2089,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushNumButton
+        m_MethodName: OnNumberButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2767,7 +2767,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushNumButton
+        m_MethodName: OnNumberButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3121,7 +3121,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushLeftButton
+        m_MethodName: OnLeftButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1827398574}
@@ -3751,7 +3751,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushNumButton
+        m_MethodName: OnNumberButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4369,7 +4369,7 @@ GameObject:
   - component: {fileID: 760211107}
   - component: {fileID: 760211106}
   m_Layer: 5
-  m_Name: select_num_text
+  m_Name: SelectNumberText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4599,7 +4599,7 @@ GameObject:
   - component: {fileID: 857494256}
   - component: {fileID: 857494255}
   m_Layer: 5
-  m_Name: answer_num_text
+  m_Name: AnswerNumberText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5450,7 +5450,7 @@ GameObject:
   - component: {fileID: 1011201980}
   - component: {fileID: 1011201981}
   m_Layer: 5
-  m_Name: clearButton
+  m_Name: ClearButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5519,7 +5519,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushClrButton
+        m_MethodName: OnClearButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6044,7 +6044,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushNumButton
+        m_MethodName: OnNumberButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6655,7 +6655,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushLeftButton
+        m_MethodName: OnLeftButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 9116109190873153015}
@@ -6712,7 +6712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1144299573}
   m_Layer: 0
-  m_Name: after_checkbutton_objects
+  m_Name: AfterCheckButtonObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6818,7 +6818,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushRightButton
+        m_MethodName: OnRightButton
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 9116109190873153015}
@@ -7477,7 +7477,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushLeftLockButton
+        m_MethodName: OnLeftLockButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7995,7 +7995,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushCheckButton
+        m_MethodName: OnCheckButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8665,7 +8665,7 @@ GameObject:
   - component: {fileID: 1440617686}
   - component: {fileID: 1440617685}
   m_Layer: 5
-  m_Name: RightNumber
+  m_Name: RightNumberText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8817,7 +8817,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushNumButton
+        m_MethodName: OnNumberButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9553,7 +9553,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushNumButton
+        m_MethodName: OnNumberButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10004,7 +10004,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushNumButton
+        m_MethodName: OnNumberButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10397,12 +10397,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46845560711f74b6093777413da150d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectnum_text: {fileID: 760211106}
-  ansnum_text: {fileID: 857494255}
-  left_num_text: {fileID: 13711975}
-  right_num_text: {fileID: 1440617685}
-  center_num_text: {fileID: 0}
-  after_checkbutton_object: {fileID: 1144299572}
+  selectNumberText: {fileID: 760211106}
+  answerNumberText: {fileID: 857494255}
+  leftNumberText: {fileID: 13711975}
+  rightNumberText: {fileID: 1440617685}
+  squareNumberText: {fileID: 0}
+  afterCheckButtonObjects: {fileID: 1144299572}
   tabMoveCurve:
     serializedVersion: 2
     m_Curve:
@@ -10428,17 +10428,17 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   canvas: {fileID: 994643162}
-  tab_panel: {fileID: 991421}
-  display_panel: {fileID: 0}
-  tab_container: {fileID: 620524893}
-  page_container: {fileID: 1550464701}
-  ans_num: 0
-  select_num: 0
-  left_num: 0
-  right_num: 0
-  center_num: 0
-  tab_flag_list: 
-  tab_list: []
+  tabPanel: {fileID: 991421}
+  displayPanel: {fileID: 1114531692}
+  tabContainer: {fileID: 620524893}
+  pageContainer: {fileID: 1550464701}
+  answerNumber: 0
+  selectNumber: 0
+  leftNumber: 0
+  rightNumber: 0
+  squareNumber: 0
+  createTabList: 
+  tabList: []
 --- !u!4 &1735436370
 Transform:
   m_ObjectHideFlags: 0
@@ -10538,7 +10538,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushNumButton
+        m_MethodName: OnNumberButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10948,7 +10948,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushCommentButton
+        m_MethodName: OnCommentButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11542,7 +11542,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushCloseCommentButton
+        m_MethodName: OnCloseCommentButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12147,7 +12147,7 @@ GameObject:
   - component: {fileID: 2126040240}
   - component: {fileID: 2126040241}
   m_Layer: 5
-  m_Name: delButton
+  m_Name: DeleteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12216,7 +12216,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1735436369}
-        m_MethodName: PushDelButton
+        m_MethodName: OnDeleteButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
