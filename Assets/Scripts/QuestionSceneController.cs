@@ -34,20 +34,21 @@ public class QuestionSceneController : MonoBehaviour
         Debug.Log(SceneManager.GetActiveScene().name);
         if (SceneManager.GetActiveScene().name == "CalculatorScene")
         {
-            leftNumber = numHolder.leftNumber;
-            rightNumber = numHolder.rightNumber;
-            if(numHolder.leftNumberIsRandom == false)
+            leftNumber = NumberHolder.leftNumber;
+            rightNumber = NumberHolder.rightNumber;
+            Debug.Log("leftNumber:" + leftNumber);
+            if(NumberHolder.leftNumberIsRandom == false)
             {
                 leftNumberText.gameObject.transform.Find("frame").gameObject.SetActive(true);
             }
-            if(numHolder.rightNumberIsRandom == false)
+            if(NumberHolder.rightNumberIsRandom == false)
             {
                 rightNumberText.gameObject.transform.Find("frame").gameObject.SetActive(true);
             }
         }
         else if (SceneManager.GetActiveScene().name == "SquareCalculatorScene")
         {
-            if (numHolder.squareDisplay)
+            if (NumberHolder.squareDisplay)
             {
                 displayPanel.transform.Find("Objects0").gameObject.SetActive(false);
                 displayPanel.transform.Find("Objects1").gameObject.SetActive(true);
@@ -57,9 +58,9 @@ public class QuestionSceneController : MonoBehaviour
                 displayPanel.transform.Find("Objects0").gameObject.SetActive(true);
                 displayPanel.transform.Find("Objects1").gameObject.SetActive(false);
             }
-            leftNumber = numHolder.numberForSquare;
-            rightNumber = numHolder.numberForSquare;
-            squareNumber = numHolder.numberForSquare;
+            leftNumber = NumberHolder.numberForSquare;
+            rightNumber = NumberHolder.numberForSquare;
+            squareNumber = NumberHolder.numberForSquare;
             squareNumberText.text = squareNumber.ToString();
         }
 
@@ -131,7 +132,7 @@ public class QuestionSceneController : MonoBehaviour
         /*tab create*/
         //tab_flag_list：n番目の解法が使えるならtrue
         //tab_list：使える解法のTab_nのtransform
-        createTabList = Calculator.GetCreateTabList(leftNumber,rightNumber);
+        createTabList = CommentGenerator.GetCreateTabList(leftNumber,rightNumber);
 
         tabList = tabController.CreateTabList(createTabList, tabContainer);
 
@@ -141,12 +142,12 @@ public class QuestionSceneController : MonoBehaviour
         //2乗モードか通常モードごとに解説欄を計算
         if (SceneManager.GetActiveScene().name == "SquareCalculatorScene")
         {
-            Calculator.CreateSquareComment(leftNumber, pageContainer.transform.Find("Page0").gameObject);
+            CommentGenerator.CreateSquareComment(leftNumber, pageContainer.transform.Find("Page0").gameObject);
         }
         else if (SceneManager.GetActiveScene().name == "CalculatorScene")
         {
-            Calculator.CreateColumnMultiplicationComment(leftNumber, rightNumber, pageContainer.transform.Find("Page0").gameObject);
-            Calculator.CreateAddDiffProductionComment(leftNumber, rightNumber, pageContainer.transform.Find("Page1").gameObject);
+            CommentGenerator.CreateColumnMultiplicationComment(leftNumber, rightNumber, pageContainer.transform.Find("Page0").gameObject);
+            CommentGenerator.CreateAddDiffProductionComment(leftNumber, rightNumber, pageContainer.transform.Find("Page1").gameObject);
         }
         /*move tab panel*/
         StartCoroutine(MoveUpCommentPanel(tabPanel,new Vector3(0.0f,-651.0f,0.0f)));
@@ -260,8 +261,8 @@ public class QuestionSceneController : MonoBehaviour
 
     public void OnLeftLockButton()
     {
-        numHolder.LockLeftNumber();
-        if (numHolder.leftNumberIsRandom)
+        NumberHolder.LockLeftNumber();
+        if (NumberHolder.leftNumberIsRandom)
         {
             leftNumberText.gameObject.transform.Find("frame").gameObject.SetActive(false);
         }
@@ -273,8 +274,8 @@ public class QuestionSceneController : MonoBehaviour
 
     public void OnRightLockButton()
     {
-        numHolder.LockRightNumber();
-        if(numHolder.rightNumberIsRandom)
+        NumberHolder.LockRightNumber();
+        if(NumberHolder.rightNumberIsRandom)
         {
             rightNumberText.gameObject.transform.Find("frame").gameObject.SetActive(false);
         }
@@ -291,8 +292,8 @@ public class QuestionSceneController : MonoBehaviour
 
     public void OnSquareDisplayButton()
     {
-        numHolder.ChangeSquareDisplay();
-        if (numHolder.squareDisplay)
+        NumberHolder.ChangeSquareDisplay();
+        if (NumberHolder.squareDisplay)
         {
             displayPanel.transform.Find("Objects0").gameObject.SetActive(false);
             displayPanel.transform.Find("Objects1").gameObject.SetActive(true);

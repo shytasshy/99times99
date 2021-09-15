@@ -10451,7 +10451,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1742302540
 GameObject:
@@ -10834,7 +10834,7 @@ GameObject:
   - component: {fileID: 1792574519}
   - component: {fileID: 1792574518}
   m_Layer: 0
-  m_Name: numHolder
+  m_Name: NumberHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10849,7 +10849,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1792574517}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d12b4fa79c3d4daea75b7d537b02538, type: 3}
+  m_Script: {fileID: 11500000, guid: 73832f072a85a4acbb93c3d616dd5c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1792574519
@@ -10864,7 +10864,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1817293732
 GameObject:

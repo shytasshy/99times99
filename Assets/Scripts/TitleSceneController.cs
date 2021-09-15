@@ -45,14 +45,14 @@ public class TitleSceneController : MonoBehaviour
     // Update is called once per frame
     public void OnSetCalculatorButton()
     {
-        numHolder.SetLeftNumber(tenPlaceNumber*10+onePlaceNumber);
+        NumberHolder.SetLeftNumber(tenPlaceNumber*10+onePlaceNumber);
         SceneManager.LoadScene("CalculatorScene");
     }
 
     public void OnRandomCalculatorButton()
     {
-        numHolder.leftNumberIsRandom = true;
-        numHolder.rightNumberIsRandom = true;
+        NumberHolder.leftNumberIsRandom = true;
+        NumberHolder.rightNumberIsRandom = true;
         SceneManager.LoadScene("CalculatorScene");
     }
 

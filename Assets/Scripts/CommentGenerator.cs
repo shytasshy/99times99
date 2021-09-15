@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Calculator : MonoBehaviour
+//詳細ページ作成
+public class CommentGenerator : MonoBehaviour
 {
-    // Start is called before the first frame update
+
     void Start()
     {
 

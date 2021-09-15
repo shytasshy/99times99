@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class numHolder : MonoBehaviour
+public class NumberHolder : MonoBehaviour
 {
-    public static int leftNumber;
-    public static int rightNumber;
+    public static int leftNumber { get; set; }
+    public static int rightNumber { get; set; }
     public static int numberForSquare;
     public static bool leftNumberIsRandom=true;
     public static bool rightNumberIsRandom=true;
