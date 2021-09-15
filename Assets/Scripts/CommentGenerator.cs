@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,11 +6,7 @@ using UnityEngine.UI;
 public class CommentGenerator : MonoBehaviour
 {
 
-    void Start()
-    {
-
-    }
-
+    //２つの数から適用可能な解説ページを判断し、ページとタブの一覧を作成
     public static List<bool> GetCreateTabList(int leftNumber, int rightNumber)
     {
         List<bool> createTabList = new List<bool>();
@@ -22,6 +17,7 @@ public class CommentGenerator : MonoBehaviour
         return createTabList;
     }
 
+    //筆算のページ
     public static void CreateColumnMultiplicationComment(int leftNumber, int rightNumber, GameObject page)
     {
         int leftTenPlaceNumber = leftNumber / 10;
@@ -152,6 +148,7 @@ public class CommentGenerator : MonoBehaviour
 
     }
 
+    //和とさの積の解法ページ
     public static void CreateAddDiffProductionComment(int leftNumber, int rightNumber, GameObject page)
     {
         int add = (leftNumber + rightNumber) / 2;
@@ -163,6 +160,7 @@ public class CommentGenerator : MonoBehaviour
 
     }
 
+    //二乗の計算の解法ページ
     public static void CreateSquareComment(int number, GameObject page)
     {
         int square = number * number;

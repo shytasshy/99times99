@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
@@ -8,13 +6,8 @@ public class SceneTransition : MonoBehaviour
 {
     [SerializeField] private Camera targetCamera;
     [SerializeField] private Vector2 aspectVec; 
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
+    //複数機種対応用のカメラ操作
     void Update()
     {
         var screenAspect = Screen.width / (float)Screen.height;
@@ -38,7 +31,7 @@ public class SceneTransition : MonoBehaviour
         targetCamera.rect = viewportRect;
     }
 
-
+    //以下、シーン移動
     public void LoadRandomCalcScene()
     {
         SceneManager.LoadScene("CalculatorScene");
