@@ -2536,7 +2536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 620552090}
   m_Layer: 5
-  m_Name: Objects0
+  m_Name: MultiplyDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2677,7 +2677,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 44b8140ce4424dd4d8379819f49a4a4a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c46de8120e5d342e7a92068b1dc3c5ad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2720,7 +2720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 704212990}
   m_Layer: 5
-  m_Name: Objects1
+  m_Name: ExponentDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5552,7 +5552,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  canvas: {fileID: 994643162}
   tabPanel: {fileID: 991421}
   displayPanel: {fileID: 1114531692}
   tabContainer: {fileID: 620524893}
@@ -5604,7 +5603,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1792574517}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d12b4fa79c3d4daea75b7d537b02538, type: 3}
+  m_Script: {fileID: 11500000, guid: 73832f072a85a4acbb93c3d616dd5c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1792574519
