@@ -1,22 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//解説ページの各タブを管理
 public class tabController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
+    //タブを１つ生成
     public static GameObject CreateTab(int tabNumber, List<bool> createTabList, GameObject tabContainer)
     {
 
         Transform tabTransform = tabContainer.transform.Find("Tab" + tabNumber.ToString());
 
+        //解説ページが適用できないケースはページのタブをインタラクティブにして表示を薄くする
         if (createTabList[tabNumber] == false)
         {
             tabTransform.gameObject.GetComponent<Toggle>().interactable = false;
@@ -26,6 +22,7 @@ public class tabController : MonoBehaviour
         return tabTransform.gameObject;
     }
 
+    //タブの一覧の作成
     public static List<GameObject> CreateTabList(List<bool> createTabList, GameObject tabContainer)
     {
         List<GameObject> tabList = new List<GameObject>();

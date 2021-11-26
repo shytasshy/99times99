@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//
 public class QuestionSceneController : MonoBehaviour
 {
     [SerializeField] private Text selectNumberText = default;
@@ -12,10 +13,7 @@ public class QuestionSceneController : MonoBehaviour
     [SerializeField] private Text rightNumberText = default;
     [SerializeField] private Text squareNumberText = default;
     [SerializeField] private GameObject afterCheckButtonObjects = default;
-
     [SerializeField] private AnimationCurve tabMoveCurve = default;
-
-    [SerializeField] private Canvas canvas = default;
     [SerializeField] private GameObject tabPanel = default;
     [SerializeField] private GameObject displayPanel = default;
     [SerializeField] private GameObject tabContainer = default;
@@ -27,40 +25,34 @@ public class QuestionSceneController : MonoBehaviour
     public int squareNumber;
     public List<bool> createTabList;
     public List<GameObject> tabList;
+
+    //
     void Start()
     {
-        selectNumber = 0;
-        tabList = new List<GameObject>();
-        Debug.Log(SceneManager.GetActiveScene().name);
         if (SceneManager.GetActiveScene().name == "CalculatorScene")
         {
-            leftNumber = numHolder.leftNumber;
-            rightNumber = numHolder.rightNumber;
-            if(numHolder.leftNumberIsRandom == false)
-            {
-                leftNumberText.gameObject.transform.Find("frame").gameObject.SetActive(true);
-            }
-            if(numHolder.rightNumberIsRandom == false)
-            {
-                rightNumberText.gameObject.transform.Find("frame").gameObject.SetActive(true);
-            }
+            leftNumber = NumberHolder.leftNumber;
+            rightNumber = NumberHolder.rightNumber;
+            leftNumberText.gameObject.transform.Find("frame").gameObject.SetActive(!NumberHolder.leftNumberIsRandom);
+            rightNumberText.gameObject.transform.Find("frame").gameObject.SetActive(!NumberHolder.rightNumberIsRandom);
         }
         else if (SceneManager.GetActiveScene().name == "SquareCalculatorScene")
         {
-            if (numHolder.squareDisplay)
+            leftNumber = NumberHolder.numberForSquare;
+            rightNumber = NumberHolder.numberForSquare;
+            squareNumber = NumberHolder.numberForSquare;
+            squareNumberText.text = squareNumber.ToString();
+
+            if (NumberHolder.squareDisplay)
             {
-                displayPanel.transform.Find("Objects0").gameObject.SetActive(false);
-                displayPanel.transform.Find("Objects1").gameObject.SetActive(true);
+                displayPanel.transform.Find("MultiplyDisplay").gameObject.SetActive(false);
+                displayPanel.transform.Find("ExponentDisplay").gameObject.SetActive(true);
             }
             else
             {
-                displayPanel.transform.Find("Objects0").gameObject.SetActive(true);
-                displayPanel.transform.Find("Objects1").gameObject.SetActive(false);
+                displayPanel.transform.Find("MultiplyDisplay").gameObject.SetActive(true);
+                displayPanel.transform.Find("ExponentDisplay").gameObject.SetActive(false);
             }
-            leftNumber = numHolder.numberForSquare;
-            rightNumber = numHolder.numberForSquare;
-            squareNumber = numHolder.numberForSquare;
-            squareNumberText.text = squareNumber.ToString();
         }
 
         leftNumberText.text = leftNumber.ToString();
@@ -70,16 +62,15 @@ public class QuestionSceneController : MonoBehaviour
         answerNumberText.text = answerNumber.ToString();
     }
 
+    //
     public void OnNumberButton(int number)
     {
         if(selectNumberText.text == "0")
         {
-            if(number != 0)
-            {
-                selectNumberText.text = number.ToString();
-            }
+            if(number != 0)　{selectNumberText.text = number.ToString();}
             return;
         }
+
         selectNumberText.text = selectNumberText.text + number.ToString();
     }
 
@@ -100,25 +91,11 @@ public class QuestionSceneController : MonoBehaviour
 
     public void OnCheckButton()
     {
-        //入力した解答text(selectnum_text)をint(select_num)に格納
-        if (selectNumberText.text.Length != 0)
-        {
-            selectNumber = int.Parse(selectNumberText.text);
-        }
-        else
-        {
-            selectNumber = 0;
-        }
+        //入力した解答(空なら0)
+        selectNumber = selectNumberText.text.Length != 0 ? int.Parse(selectNumberText.text) : 0;
 
         //解答の数字が正解なら青、不正解なら赤
-        if (answerNumber == selectNumber)
-        {
-            selectNumberText.color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
-        }
-        else
-        {
-            selectNumberText.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
-        }
+        selectNumberText.color = selectNumber == answerNumber ? new Color(0.0f, 0.0f, 1.0f, 1.0f): new Color(1.0f, 0.0f, 0.0f, 1.0f);
 
         //正しい解答と解説ボタンを表示
         afterCheckButtonObjects.gameObject.SetActive(true);
@@ -128,33 +105,34 @@ public class QuestionSceneController : MonoBehaviour
 
     public void OnCommentButton()
     {
-        /*tab create*/
-        //tab_flag_list：n番目の解法が使えるならtrue
-        //tab_list：使える解法のTab_nのtransform
-        createTabList = Calculator.GetCreateTabList(leftNumber,rightNumber);
+        //createTabList：n番目の解法が使えるならtrue
+        //tabList：tabのtransform
+        createTabList = CommentGenerator.GetCreateTabList(leftNumber,rightNumber);
 
         tabList = tabController.CreateTabList(createTabList, tabContainer);
 
         tabList[0].GetComponent<Toggle>().isOn = true;
         tabList[0].GetComponent<Toggle>().Select();
 
-        //2乗モードか通常モードごとに解説欄を計算
+        //モードか通常モードごとに解説欄を計算
         if (SceneManager.GetActiveScene().name == "SquareCalculatorScene")
         {
-            Calculator.CreateSquareComment(leftNumber, pageContainer.transform.Find("Page0").gameObject);
+            CommentGenerator.CreateSquareComment(leftNumber, pageContainer.transform.Find("Page0").gameObject);
         }
-        else if (SceneManager.GetActiveScene().name == "CalculatorScene")
+
+        if (SceneManager.GetActiveScene().name == "CalculatorScene")
         {
-            Calculator.CreateColumnMultiplicationComment(leftNumber, rightNumber, pageContainer.transform.Find("Page0").gameObject);
-            Calculator.CreateAddDiffProductionComment(leftNumber, rightNumber, pageContainer.transform.Find("Page1").gameObject);
+            CommentGenerator.CreateColumnMultiplicationComment(leftNumber, rightNumber, pageContainer.transform.Find("Page0").gameObject);
+            CommentGenerator.CreateAddDiffProductionComment(leftNumber, rightNumber, pageContainer.transform.Find("Page1").gameObject);
         }
-        /*move tab panel*/
+
+        //解説パネルを上へ
         StartCoroutine(MoveUpCommentPanel(tabPanel,new Vector3(0.0f,-651.0f,0.0f)));
     }
 
     public void OnCloseCommentButton()
     {
-        /*move tab panel*/
+        //解説パネルを下へ
         StartCoroutine(MoveDownCommentPanel(tabPanel, new Vector3(0.0f, -1850.0f, 90.0f)));
     }
 
@@ -167,8 +145,6 @@ public class QuestionSceneController : MonoBehaviour
 
         Vector3 position = targetPosition - startPosition;
 
-
-
         while (currentTime < moveTime)
         {
             currentTime += Time.deltaTime;
@@ -176,9 +152,9 @@ public class QuestionSceneController : MonoBehaviour
             obj.transform.localPosition = startPosition + scale * position;
             yield return null;
         }
-
     }
 
+    //各種ボタンを表示して解説パネルを上へ
     public IEnumerator MoveUpCommentPanel(GameObject obj, Vector3 targetPosition)
     {
         float currentTime = 0;
@@ -202,6 +178,7 @@ public class QuestionSceneController : MonoBehaviour
         }
     }
 
+    //各種ボタンを非表示にしてから解説パネルを下へ
     public IEnumerator MoveDownCommentPanel(GameObject obj, Vector3 targetPosition)
     {
         float currentTime = 0;
@@ -227,11 +204,13 @@ public class QuestionSceneController : MonoBehaviour
 
     }
 
+    //解説の文を進める
     public void OnRightButton(GameObject page)
     {
         int i = 1;
         while(page.transform.Find("Objects"+i)!=null)
         {
+            //非表示のうち一番若いものをアクティブにしてリターン
             if(page.transform.Find("Objects" + i).gameObject.activeSelf == false)
             {
                 page.transform.Find("Objects" + i).gameObject.SetActive(true);
@@ -241,14 +220,17 @@ public class QuestionSceneController : MonoBehaviour
         }
     }
 
+    //解説の文を非表示に戻す
     public void OnLeftButton(GameObject page)
     {
-        int i = 1;
-        while(page.transform.Find("Objects"+i)!=null)
+        int objectNumber = 1;
+        while(page.transform.Find("Objects" + objectNumber)!=null)
         {
-            i++;
+            objectNumber++;
         }
-        for(int j = i-1; j > 0; j--)
+
+        //アクティブのうち一番老い番を非表示にしてリターン
+        for(int j = objectNumber-1; j > 0; j--)
         {
             if (page.transform.Find("Objects" + j).gameObject.activeSelf == true)
             {
@@ -260,28 +242,14 @@ public class QuestionSceneController : MonoBehaviour
 
     public void OnLeftLockButton()
     {
-        numHolder.LockLeftNumber();
-        if (numHolder.leftNumberIsRandom)
-        {
-            leftNumberText.gameObject.transform.Find("frame").gameObject.SetActive(false);
-        }
-        else
-        {
-            leftNumberText.gameObject.transform.Find("frame").gameObject.SetActive(true);
-        }
+        NumberHolder.LockLeftNumber();
+        leftNumberText.gameObject.transform.Find("frame").gameObject.SetActive(!NumberHolder.leftNumberIsRandom);
     }
 
     public void OnRightLockButton()
     {
-        numHolder.LockRightNumber();
-        if(numHolder.rightNumberIsRandom)
-        {
-            rightNumberText.gameObject.transform.Find("frame").gameObject.SetActive(false);
-        }
-        else
-        {
-            rightNumberText.gameObject.transform.Find("frame").gameObject.SetActive(true);
-        }
+        NumberHolder.LockRightNumber();
+        rightNumberText.gameObject.transform.Find("frame").gameObject.SetActive(!NumberHolder.rightNumberIsRandom);
     }
 
     public IEnumerator WaitMoment(float time)
@@ -291,16 +259,16 @@ public class QuestionSceneController : MonoBehaviour
 
     public void OnSquareDisplayButton()
     {
-        numHolder.ChangeSquareDisplay();
-        if (numHolder.squareDisplay)
+        NumberHolder.ChangeSquareDisplay();
+        if (NumberHolder.squareDisplay)
         {
-            displayPanel.transform.Find("Objects0").gameObject.SetActive(false);
-            displayPanel.transform.Find("Objects1").gameObject.SetActive(true);
+            displayPanel.transform.Find("MultiplyDisplay").gameObject.SetActive(false);
+            displayPanel.transform.Find("ExponentDisplay").gameObject.SetActive(true);
         }
         else
         {
-            displayPanel.transform.Find("Objects0").gameObject.SetActive(true);
-            displayPanel.transform.Find("Objects1").gameObject.SetActive(false);
+            displayPanel.transform.Find("MultiplyDisplay").gameObject.SetActive(true);
+            displayPanel.transform.Find("ExponentDisplay").gameObject.SetActive(false);
         }
     }
 

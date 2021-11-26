@@ -1,43 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+//ボタンの挙動の定義
 public class PushButtonController : MonoBehaviour
 {
-    private bool _buttonDownFlag = false;
-    // Update is called once per frame
-    void Start()
-    {
-        
-    }
+    private bool _buttonDown = false;
 
-    void Update()
-    {
-
-    }
-
+    //押下中の表現
     public void OnButtonDown()
     {
-        _buttonDownFlag = true;
+        _buttonDown = true;
         this.gameObject.transform.localPosition += new Vector3(0.0f, -9.0f);
         this.gameObject.GetComponent<UnityEngine.UI.Shadow>().effectDistance = new Vector2(0.0f, 0.0f);
     }
 
+    //ボタン上で押下をやめたとき
     public void OnButtonUp()
     {
-        if (_buttonDownFlag)
+        if (_buttonDown)
         {
-            _buttonDownFlag = false;
+            _buttonDown = false;
             this.gameObject.transform.localPosition += new Vector3(0.0f, 9.0f);
             this.gameObject.GetComponent<UnityEngine.UI.Shadow>().effectDistance = new Vector2(0.0f, -9.0f);
         }
     }
 
+    //ボタン上から指がスライドして外に出た時
     public void OnButtonExit()
     {
-        if (_buttonDownFlag)
+        if (_buttonDown)
         {
-            _buttonDownFlag = false;
+            _buttonDown = false;
             this.gameObject.transform.localPosition += new Vector3(0.0f, 9.0f);
             this.gameObject.GetComponent<UnityEngine.UI.Shadow>().effectDistance = new Vector2(0.0f, -9.0f);
         }
